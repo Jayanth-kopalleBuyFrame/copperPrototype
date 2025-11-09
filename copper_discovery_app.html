@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copper.co Discovery - Salesforce RCA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .stage {
+            padding: 40px;
+            border-bottom: 1px solid #e1e8ed;
+        }
+        
+        .stage:last-child {
+            border-bottom: none;
+        }
+        
+        .stage-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .stage-number {
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .stage-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .stage-description {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-left: 4px solid #667eea;
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: #5a6c7d;
+        }
+        
+        .question {
+            margin-bottom: 35px;
+        }
+        
+        .question-number {
+            display: inline-block;
+            background: #2c3e50;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            text-align: center;
+            line-height: 30px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .question-text {
+            font-size: 16px;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .answer-box {
+            width: 100%;
+            min-height: 120px;
+            padding: 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            resize: vertical;
+            transition: border-color 0.3s;
+        }
+        
+        .answer-box:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .answer-box::placeholder {
+            color: #95a5a6;
+        }
+        
+        .subsection {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px dashed #e1e8ed;
+        }
+        
+        .subsection-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #764ba2;
+            margin-bottom: 25px;
+        }
+        
+        .context-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #856404;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .answer-box {
+                border: 1px solid #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Copper.co Discovery Framework</h1>
+            <p>Salesforce Revenue Cloud & Analytics (RCA) - Migration from CPQ</p>
+        </div>
+
+        <!-- Stage 1: Current State Assessment -->
+        <div class="stage">
+            <div class="stage-header">
+                <div class="stage-number">1</div>
+                <div class="stage-title">Current State Assessment</div>
+            </div>
+            <div class="stage-description">
+                <strong>Objective:</strong> Understand Copper's existing CPQ setup and identify gaps between current quoting capabilities and actual billing complexity for institutional crypto custody.
+            </div>
+
+            <div class="question">
+                <div class="question-number">1</div>
+                <div class="question-text">You're currently using Salesforce CPQ - walk me through what happens AFTER an order is signed. How does usage data (Assets Under Custody, trading volume) flow into invoices today?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">2</div>
+                <div class="question-text">How do you currently calculate custody fees when crypto values fluctuate daily? Manual exports? Scripts? Excel? Walk me through the actual process.</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">3</div>
+                <div class="question-text">What's your month-end close process like? How many days does it take from usage data collection to final invoices sent? How many people are involved?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">4</div>
+                <div class="question-text">Where are the biggest manual interventions today in your billing process? (Pricing adjustments? Revenue recognition? Multi-currency conversions?)</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">5</div>
+                <div class="question-text">How do you handle ASC 606 revenue recognition currently? Manual journal entries or partially automated? What systems are involved?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+        </div>
+
+        <!-- Stage 2: Business Model & Revenue Streams -->
+        <div class="stage">
+            <div class="stage-header">
+                <div class="stage-number">2</div>
+                <div class="stage-title">Business Model & Revenue Streams</div>
+            </div>
+            <div class="stage-description">
+                <strong>Objective:</strong> Map Copper's revenue streams (custody, trading, prime services, subscriptions) to understand billing complexity and RCA value proposition.
+            </div>
+
+            <div class="question">
+                <div class="question-number">1</div>
+                <div class="question-text">Break down your revenue mix: What percentage comes from custody fees vs. trading fees vs. platform subscriptions vs. prime services?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">2</div>
+                <div class="question-text">For custody fees - how do you calculate the billable amount? Daily snapshots? Average monthly AUC? End-of-month balance? Does it vary by customer?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">3</div>
+                <div class="question-text">Do you offer volume discounts or tiered pricing? If yes, how do you track whether clients hit discount thresholds? (Real-time? Monthly? Quarterly?)</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">4</div>
+                <div class="question-text">You've expanded to Hong Kong and Abu Dhabi - how many legal entities bill customers? Do you invoice in local currencies or standardize everything to USD?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">5</div>
+                <div class="question-text">What's your typical contract structure? Annual upfront payment? Monthly in arrears? Mix of both? How does this impact your cash flow vs. revenue recognition?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">Complete Product Portfolio</div>
+
+                <div class="question">
+                    <div class="question-number">6</div>
+                    <div class="question-text">Looking at your complete product portfolio (Custody, Staking, ClearLoop, Treasury Management, Copper Connect, Copper Network, Agency Lending, Securities) - what percentage of your customers use just ONE product vs. multiple products bundled together?</div>
+                    <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+                </div>
+
+                <div class="question">
+                    <div class="question-number">7</div>
+                    <div class="question-text">For clients using multiple products (e.g., Custody + Staking + ClearLoop), do you invoice separately for each product, or create bundled pricing? How does this complicate month-end billing?</div>
+                    <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+                </div>
+
+                <div class="question">
+                    <div class="question-number">8</div>
+                    <div class="question-text">Treasury Management and Copper Connect - are these add-on modules included with custody, or standalone products with separate pricing?</div>
+                    <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+                </div>
+
+                <div class="question">
+                    <div class="question-number">9</div>
+                    <div class="question-text">Agency Lending - when you lend client assets on their behalf, how do you split revenue with them? How is this calculated and reflected on invoices (gross vs. net)?</div>
+                    <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+                </div>
+
+                <div class="question">
+                    <div class="question-number">10</div>
+                    <div class="question-text">Copper Securities (your FSRA-regulated UAE entity) - does this have separate billing systems, different fee structures, or different revenue recognition requirements due to securities regulations?</div>
+                    <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stage 3: Customer & Billing Structure -->
+        <div class="stage">
+            <div class="stage-header">
+                <div class="stage-number">3</div>
+                <div class="stage-title">Customer & Billing Structure</div>
+            </div>
+            <div class="stage-description">
+                <strong>Objective:</strong> Understand who gets billed, how invoice structures work, and the complexity of institutional client relationships.
+            </div>
+
+            <div class="question">
+                <div class="question-number">1</div>
+                <div class="question-text">Who are your customers that receive invoices? Are they institutional investors (hedge funds, family offices) or the underlying asset owners (the funds' LPs)? Or both?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">2</div>
+                <div class="question-text">Walk us through a typical billing scenario: If a hedge fund has $100M in custody and trades across 5 exchanges in a month, how many invoices are generated and who receives them?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">3</div>
+                <div class="question-text">What is the relationship between an institutional client, their underlying assets, and your billing model? Do you bill per fund entity, per sub-fund, per asset class, or aggregated?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">Volume & Scale</div>
+
+                <div class="question">
+                    <div class="question-number">4</div>
+                    <div class="question-text">You work with 400+ institutions. Break this down: How many are actively trading vs. custody-only? How many have multi-year contracts vs. month-to-month?</div>
+                    <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+                </div>
+
+                <div class="question">
+                    <div class="question-number">5</div>
+                    <div class="question-text">What is your current monthly invoice volume, and what growth do you anticipate with your Hong Kong and Abu Dhabi expansion over the next 12-24 months?</div>
+                    <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stage 4: Billable Events & Triggers -->
+        <div class="stage">
+            <div class="stage-header">
+                <div class="stage-number">4</div>
+                <div class="stage-title">Billable Events & Triggers</div>
+            </div>
+            <div class="stage-description">
+                <strong>Objective:</strong> Identify what triggers billing, when charges are calculated, and how different products have different billing cycles.
+            </div>
+
+            <div class="question">
+                <div class="question-number">1</div>
+                <div class="question-text">What event triggers the creation of an invoice? Is it month-end close, a specific calendar date, trade settlement completion, or something else?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">2</div>
+                <div class="question-text">For custody fees - do you bill based on daily AUC snapshots, average monthly balance, or end-of-month valuation? How do you handle intra-month deposits/withdrawals?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">3</div>
+                <div class="question-text">For trading fees - do you bill per trade immediately, batch at month-end, or net-settle with the client? How do different exchanges affect this timing?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">4</div>
+                <div class="question-text">For staking rewards - when does the billing event occur? When rewards are earned, claimed, or distributed? If you take a percentage of staking rewards, how is this calculated and billed?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">5</div>
+                <div class="question-text">For prime services (lending) - how do you bill interest? Daily accrual? Monthly calculation? How does this integrate with other billing components?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">6</div>
+                <div class="question-text">Copper Connect (DeFi Gateway) - how do you bill for DeFi interactions? Per transaction? Monthly access fee? How do you track and price different types of DeFi activities (swaps, lending, yield farming)?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">7</div>
+                <div class="question-text">Copper Network (settlement services) - are you billing both parties in a settlement transaction? Is there a network fee vs. per-settlement fee? How does pricing differ from ClearLoop?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+        </div>
+
+        <!-- Stage 5: Pricing Complexity & Volatility -->
+        <div class="stage">
+            <div class="stage-header">
+                <div class="stage-number">5</div>
+                <div class="stage-title">Pricing Complexity & Crypto Volatility</div>
+            </div>
+            <div class="stage-description">
+                <strong>Objective:</strong> Understand how pricing models work, what variables drive final prices, and how crypto market volatility impacts billing.
+            </div>
+
+            <div class="question">
+                <div class="question-number">1</div>
+                <div class="question-text">Walk us through your most complex pricing scenario. What variables determine the final price? (AUC tiers, blockchain type, storage type - cold/warm/hot, volume discounts, contract term length?)</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">2</div>
+                <div class="question-text">How do you handle crypto price volatility in billing? If Bitcoin drops 40% mid-month, does that affect custody fee calculations immediately, or do you use some kind of averaging mechanism?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">3</div>
+                <div class="question-text">Do you have different custody pricing for different blockchains? (e.g., Bitcoin vs. Ethereum vs. Solana) If yes, how is this reflected in invoices and product structures?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">4</div>
+                <div class="question-text">What percentage of your clients are on custom pricing vs. standard rate cards? For custom pricing, how do you manage exceptions and ensure billing accuracy?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+        </div>
+
+        <!-- Stage 6: Mid-Contract Changes & Amendments -->
+        <div class="stage">
+            <div class="stage-header">
+                <div class="stage-number">6</div>
+                <div class="stage-title">Mid-Contract Changes & Amendments</div>
+            </div>
+            <div class="stage-description">
+                <strong>Objective:</strong> Identify how contract amendments are handled, how pricing changes flow through to billing, and the manual effort involved.
+            </div>
+
+            <div class="question">
+                <div class="question-number">1</div>
+                <div class="question-text">Walk me through what happens when a client wants to add services mid-contract. (Example: They have custody-only and now want to add trading access) How long does this take from request to updated billing?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">2</div>
+                <div class="question-text">If a client significantly increases their AUC mid-month (e.g., deposits an additional $50M), how do you handle pro-rated billing? Is this automated or manual?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">3</div>
+                <div class="question-text">When you negotiate a price increase or volume discount tier change mid-contract, how long does it take Finance to calculate the billing and revenue recognition impact? What systems are involved?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">4</div>
+                <div class="question-text">How do you handle downgrades or service removals? (Client reduces AUC or stops trading) What's the process for adjusting ongoing billing and revenue recognition?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+        </div>
+
+        <!-- Stage 7: Data Integration & System Architecture -->
+        <div class="stage">
+            <div class="stage-header">
+                <div class="stage-number">7</div>
+                <div class="stage-title">Data Integration & System Architecture</div>
+            </div>
+            <div class="stage-description">
+                <strong>Objective:</strong> Map data sources, understand integration points, and identify where usage data lives and how it flows into billing.
+            </div>
+
+            <div class="question">
+                <div class="question-number">1</div>
+                <div class="question-text">Where does your Assets Under Custody (AUC) data live today? Is it in your custody platform, a separate database, or multiple sources? How is it aggregated?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">2</div>
+                <div class="question-text">How does trading volume data flow from exchanges (via ClearLoop) into your billing system? Real-time APIs? Daily batch exports? Manual reconciliation?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">3</div>
+                <div class="question-text">What's the latency between a trade executing and that data being available for billing? Hours? Days? Does this create any month-end close challenges?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">4</div>
+                <div class="question-text">What systems are currently involved in your quote-to-cash process? (Salesforce CPQ, ERP system, custom databases, Excel, other tools?) How do they connect?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">5</div>
+                <div class="question-text">If you had perfect integration, what would the ideal data flow look like? Custody/trading systems → Salesforce RCA → invoice generation → accounting system?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+        </div>
+
+        <!-- Stage 8: Pain Points & Breaking Points -->
+        <div class="stage">
+            <div class="stage-header">
+                <div class="stage-number">8</div>
+                <div class="stage-title">Pain Points & Breaking Points</div>
+            </div>
+            <div class="stage-description">
+                <strong>Objective:</strong> Identify the specific scenarios causing the most pain, where current systems break, and what keeps Finance up at night.
+            </div>
+
+            <div class="question">
+                <div class="question-number">1</div>
+                <div class="question-text">What's the ONE billing scenario that consistently causes headaches for your Finance team? Walk me through a specific recent example.</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">2</div>
+                <div class="question-text">What percentage of invoices require manual corrections or adjustments after generation? What are the most common types of errors?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">3</div>
+                <div class="question-text">Where do you see your current CPQ + manual billing process breaking as you scale? More clients? More products? More jurisdictions? More trading volume?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">4</div>
+                <div class="question-text">How much time does your Finance team spend on billing operations vs. strategic work (forecasting, analysis, investor reporting)? What percentage split?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">5</div>
+                <div class="question-text">If you could wave a magic wand and fix ONE thing about your quote-to-cash process tomorrow, what would it be and why?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+        </div>
+
+        <!-- Stage 9: Audit, Compliance & Reporting -->
+        <div class="stage">
+            <div class="stage-header">
+                <div class="stage-number">9</div>
+                <div class="stage-title">Audit, Compliance & Reporting</div>
+            </div>
+            <div class="stage-description">
+                <strong>Objective:</strong> Understand regulatory requirements, audit burden, and compliance needs that RCA's automated controls can address.
+            </div>
+
+            <div class="question">
+                <div class="question-number">1</div>
+                <div class="question-text">What audit and compliance requirements do you have? (SOC 2, ISO 27001, financial audits for investors, regulatory reporting?) How frequently?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">2</div>
+                <div class="question-text">How much time goes into audit preparation each cycle? What billing and revenue documentation do auditors specifically request?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">3</div>
+                <div class="question-text">Do you have regulatory requirements around billing transparency or fee disclosure for institutional clients? (MiFID II, SEC custody rules, etc.?)</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">4</div>
+                <div class="question-text">How do you handle multi-jurisdictional tax compliance? (VAT in UK/EU, GST in Singapore/Hong Kong, sales tax in US?) Is this automated or manual?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">5</div>
+                <div class="question-text">What revenue reports do you provide to your board and investors? How long does it take to generate these? Are they pulled from multiple systems?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+        </div>
+
+        <!-- Stage 10: Success Criteria & Implementation -->
+        <div class="stage">
+            <div class="stage-header">
+                <div class="stage-number">10</div>
+                <div class="stage-title">Success Criteria & Implementation Readiness</div>
+            </div>
+            <div class="stage-description">
+                <strong>Objective:</strong> Define what success looks like, identify stakeholders, understand timeline constraints, and address concerns.
+            </div>
+
+            <div class="question">
+                <div class="question-number">1</div>
+                <div class="question-text">What would a successful RCA implementation look like for you in 6-12 months? Give me specific, measurable outcomes. (e.g., "Reduce month-end close from 5 days to 2 days")</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">2</div>
+                <div class="question-text">Who are the key stakeholders we need to bring along on this journey? (RevOps, Finance, Sales Ops, Product, Engineering, Legal, Compliance?) Who has veto power?</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">3</div>
+                <div class="question-text">What's your timeline for migrating from CPQ to RCA? Are there any forcing functions? (Audit deadlines, fundraising rounds, new product launches, regulatory requirements?)</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">4</div>
+                <div class="question-text">What concerns do you have about migrating from CPQ to RCA? (Data migration complexity, business continuity during transition, learning curve for teams, integration challenges?)</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="question">
+                <div class="question-number">5</div>
+                <div class="question-text">Beyond billing automation - what other RCA capabilities matter most to you? (Revenue analytics and forecasting, renewal management, subscription lifecycle, dunning and collections?)</div>
+                <textarea class="answer-box" placeholder="Enter your answer..."></textarea>
+            </div>
+
+            <div class="context-note">
+                <strong>Key Context to Capture Throughout Discovery:</strong><br>
+                • Current team size (Finance, RevOps, Billing Ops)<br>
+                • Technology stack and integration points<br>
+                • Budget and ROI expectations<br>
+                • Decision-making process and timeline<br>
+                • Competitive evaluation (other vendors being considered?)<br>
+                • Internal champions and potential blockers
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Copper.co x Salesforce Revenue Cloud & Analytics</p>
+            <p style="margin-top: 10px; font-size: 14px; opacity: 0.8;">Discovery Framework - Prepared for Thursday Demo</p>
+        </div>
+    </div>
+
+    <script>
+        // Auto-save to localStorage (optional - can be removed if not needed)
+        const textareas = document.querySelectorAll('.answer-box');
+        textareas.forEach((textarea, index) => {
+            // Load saved answers
+            const saved = localStorage.getItem(`copper-answer-${index}`);
+            if (saved) {
+                textarea.value = saved;
+            }
+            
+            // Save on input
+            textarea.addEventListener('input', (e) => {
+                localStorage.setItem(`copper-answer-${index}`, e.target.value);
+            });
+        });
+
+        // Print functionality
+        window.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                window.print();
+            }
+        });
+    </script>
+</body>
+</html>
