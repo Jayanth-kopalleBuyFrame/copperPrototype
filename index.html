@@ -359,78 +359,78 @@
         <div class="tab-content active" id="tab-0">
             <div class="stage-intro">
                 <h2>Stage 1: Product Economics</h2>
-                <p><strong>Goal:</strong> Understand how different products generate revenue and what drives pricing variability.</p>
+                <p><strong>Goal:</strong> Map the relationship between products, pricing variables, and invoice line items to understand billing architecture.</p>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">1</div>
-                    <div class="question-text">Walk me through your custody product. Is it just "store crypto, charge X%", or are there different rates based on storage type (cold/warm/hot), blockchain, or asset class? What makes one custody arrangement more expensive than another?</div>
+                    <div class="question-text">Walk me through the relationship between an asset, a blockchain, and a storage type in your custody pricing model. If a client has Bitcoin in cold storage AND Ethereum in hot storage - are those two separate line items on an invoice? Do they have different rates? How does this translate to what you bill?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Describe custody pricing structure..."></textarea>
+                <textarea class="answer-box" placeholder="Describe the asset → blockchain → storage type → price relationship..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">2</div>
-                    <div class="question-text">For staking - you're sharing rewards with clients. How does this work across different blockchains that have wildly different APYs? (Ethereum at 4% vs Solana at 7% vs Polkadot at 12%) Does your revenue share percentage stay constant or does it vary?</div>
+                    <div class="question-text">For staking revenue share - walk me through a typical scenario: Client stakes $50M Ethereum (4% APY) and $30M Solana (7% APY) for one month. How many line items appear on their invoice? Do you show gross rewards earned, then subtract your share? Or just bill your portion? How does the client verify the calculation?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Staking revenue model..."></textarea>
+                <textarea class="answer-box" placeholder="Map staking rewards → invoice line items..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">3</div>
-                    <div class="question-text">ClearLoop trading fees - do you charge the same rate regardless of which exchange the trade happens on? Or does Binance cost differently than Coinbase? What about trade types - spot vs derivatives vs OTC?</div>
+                    <div class="question-text">What is the relationship between a trade, an exchange, and a fee in your ClearLoop billing? If a client executes 50 trades across 5 exchanges in a month - does your invoice show 50 line items (one per trade)? Or 5 line items (aggregated by exchange)? Or 1 line item (total trading fee)? Walk me through what the client actually sees.</div>
                 </div>
-                <textarea class="answer-box" placeholder="Trading fee structure..."></textarea>
+                <textarea class="answer-box" placeholder="Explain trade → exchange → invoice structure..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">4</div>
-                    <div class="question-text">When a client uses multiple products - custody + trading + staking - do you bundle them at a discount? Or is each product priced independently? How do you handle clients who want custom packages?</div>
+                    <div class="question-text">Help me understand multi-product scenarios: If Pantera Capital uses custody ($200M AUC), trading ($50M volume), and staking ($80M staked) in January - do they receive one invoice with three sections? Three separate invoices? How do bundle discounts appear - as separate line items or adjustments at the bottom?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Multi-product packaging..."></textarea>
+                <textarea class="answer-box" placeholder="Map multi-product usage → invoice presentation..."></textarea>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Volume Dynamics</div>
+                <div class="subsection-title">Volume Tier Architecture</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">5</div>
-                        <div class="question-text">Let's say a client starts with $50M in custody at 0.5% annual. They grow to $150M. Does the rate change automatically? Do you apply the new rate to everything, or just the incremental $100M? Who tracks this?</div>
+                        <div class="question-text">Walk me through volume tier mechanics: Client starts January with $50M AUC (Tier 1: 0.5% rate). On January 15, they deposit $100M more (now $150M total, qualifies for Tier 2: 0.4% rate). On the invoice, do you show: (A) Days 1-15 @ 0.5%, Days 16-31 @ 0.4%? (B) Entire month @ blended rate? (C) Something else? What actually appears on the invoice?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Volume tier mechanics..."></textarea>
+                    <textarea class="answer-box" placeholder="Explain tier threshold crossing → invoice calculation..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">6</div>
-                        <div class="question-text">For trading volume discounts - if a client crosses a threshold mid-month (say they hit $50M on day 20), do you recalculate all their prior trades at the new rate? Or does it only apply going forward?</div>
+                        <div class="question-text">For trading volume discounts - explain the relationship between cumulative monthly volume, threshold crossings, and retroactive pricing. If standard rate is 0.10% but volume discount at $50M drops it to 0.08%, and client crosses $50M on day 20 - do you recalculate the first 19 days of trades? How does the invoice reflect this?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Mid-period threshold handling..."></textarea>
+                    <textarea class="answer-box" placeholder="Map volume accumulation → threshold → retroactive adjustment..."></textarea>
                 </div>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Geographic Complexity</div>
+                <div class="subsection-title">Multi-Entity Architecture</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">7</div>
-                        <div class="question-text">You have entities in UK, US, Hong Kong, and Abu Dhabi. If a UK client wants to be invoiced in GBP but their assets are custodied through your HK entity, how does that work? Does currency or jurisdiction affect pricing?</div>
+                        <div class="question-text">Help me understand your entity structure: You have Copper UK, Copper US, Copper Hong Kong, Copper Securities (UAE). If Brevan Howard (UK-based) custodies assets through Copper HK for APAC trading hours, wants invoicing in GBP, but the legal entity providing service is Copper HK - who issues the invoice? What currency? Does the entity providing service affect the rate?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Multi-jurisdiction pricing..."></textarea>
+                    <textarea class="answer-box" placeholder="Map client location → service entity → billing entity → currency..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">8</div>
-                        <div class="question-text">Your Securities entity in UAE - does it have completely different fee structures than your custody business? Can the same client use both, and if so, do you consolidate billing or issue separate invoices?</div>
+                        <div class="question-text">Walk me through a cross-entity scenario: Same client uses Copper UK for custody ($100M), Copper Securities UAE for tokenized bond trading ($20M), and both services in the same month. Do they receive two invoices from two entities? One consolidated invoice? How do transfer pricing rules between your entities affect what the client pays?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Securities vs custody billing..."></textarea>
+                    <textarea class="answer-box" placeholder="Explain multi-entity service delivery → billing consolidation..."></textarea>
                 </div>
             </div>
 
@@ -444,78 +444,78 @@
         <div class="tab-content" id="tab-1">
             <div class="stage-intro">
                 <h2>Stage 2: Operational Complexity</h2>
-                <p><strong>Goal:</strong> Understand the mechanics of how billable events are captured, calculated, and invoiced.</p>
+                <p><strong>Goal:</strong> Map the flow from billable events to invoice line items to understand data architecture and calculation dependencies.</p>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">1</div>
-                    <div class="question-text">For custody fees based on Assets Under Custody - do you bill on end-of-month balance? Daily average? Something else? What happens if a client deposits $100M on day 1 but withdraws it all on day 28?</div>
+                    <div class="question-text">Walk me through Assets Under Custody calculation: Client has Bitcoin worth $50M on day 1. Bitcoin drops 30% by day 15 (now $35M). Client deposits another $20M Bitcoin on day 20. Bitcoin rallies 40% by day 31. What number appears on the invoice as "Assets Under Custody" for the month - and how did you arrive at it?</div>
                 </div>
-                <textarea class="answer-box" placeholder="AUC calculation methodology..."></textarea>
+                <textarea class="answer-box" placeholder="Map daily AUC snapshots → monthly billable amount..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">2</div>
-                    <div class="question-text">You support 600+ assets across 60+ blockchains. Does your system automatically aggregate a client's total AUC across all of them? Or does someone manually pull reports from each blockchain and sum them up?</div>
+                    <div class="question-text">Help me understand multi-blockchain aggregation: Client has $20M Bitcoin (Bitcoin network), $30M ETH (Ethereum network), $15M USDC (Ethereum network), $10M SOL (Solana network), $5M wBTC (wrapped Bitcoin on Ethereum). What is their "total AUC" for billing purposes? Do you aggregate across all chains? Are there different rates per chain? How does this appear on the invoice?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Multi-blockchain aggregation..."></textarea>
+                <textarea class="answer-box" placeholder="Explain cross-chain aggregation → rate application → line items..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">3</div>
-                    <div class="question-text">Walk me through month-end. When do you freeze the data? How long does it take to go from "month ended" to "invoices sent"? What's the longest it's ever taken and why?</div>
+                    <div class="question-text">Walk me through your month-end cutoff: January 31st falls on a Friday. Do you freeze AUC data at 11:59 PM UTC? Midnight in each client's timezone? What if a client deposits $50M at 11:45 PM on Jan 31 - is that January's AUC or February's? Who determines this and how is it documented?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Month-end timeline..."></textarea>
+                <textarea class="answer-box" placeholder="Map cutoff timing → data capture → billing period assignment..."></textarea>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Event-Driven Billing</div>
+                <div class="subsection-title">Event-to-Invoice Mapping</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">4</div>
-                        <div class="question-text">When a trade settles via ClearLoop - is that billable event captured immediately in your billing system? Or do you batch them up throughout the month? How do you ensure no trades slip through?</div>
+                        <div class="question-text">Explain the relationship between a ClearLoop trade and an invoice line item: Client executes 127 trades in January across Binance (73 trades), Coinbase (41 trades), Kraken (13 trades). Total volume: $42M. On the invoice, do you show: (A) 127 separate line items? (B) 3 line items aggregated by exchange? (C) 1 line item with total fee? Walk me through what determines this.</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Trade event capture..."></textarea>
+                    <textarea class="answer-box" placeholder="Map individual trades → aggregation logic → invoice presentation..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">5</div>
-                        <div class="question-text">Staking rewards are earned daily, but different blockchains distribute them on different schedules. Do you bill when rewards are earned, or when they're claimed? How do you track this across 20+ chains?</div>
+                        <div class="question-text">For staking across multiple blockchains - help me understand timing: Ethereum rewards are earned daily but claimable weekly. Solana rewards are earned and distributed daily. Cardano rewards are earned per epoch (5 days). Client stakes all three. When do you bill your revenue share? When earned? When claimable? When claimed? How do you track 30+ days of different reward schedules across 20+ blockchains?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Staking reward timing..."></textarea>
+                    <textarea class="answer-box" placeholder="Map blockchain-specific reward timing → revenue share calculation..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">6</div>
-                        <div class="question-text">For DeFi interactions through Copper Connect - does every transaction cost the same? Or does a Uniswap swap cost different than an Aave lending transaction? Who configured that pricing logic?</div>
+                        <div class="question-text">Walk me through DeFi interaction billing: Client uses Copper Connect for 8 Uniswap swaps ($250 each), 3 Aave lending transactions ($500 each), 2 Compound yield farming setups ($1,000 each). Are these all billed at the same rate? Different rates per protocol type? Per transaction size? How does gas fee variation (Ethereum gas was $5 on day 1, $80 on day 15) affect what you bill?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="DeFi pricing logic..."></textarea>
+                    <textarea class="answer-box" placeholder="Map DeFi interaction types → pricing logic → gas fee handling..."></textarea>
                 </div>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Data Flow Reality</div>
+                <div class="subsection-title">Data Source Architecture</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">7</div>
-                        <div class="question-text">Be honest - what percentage of your billing process is automated end-to-end vs involves someone exporting to Excel, doing calculations, and then manually creating invoices?</div>
+                        <div class="question-text">Map your data sources: Where does AUC data originate - your custody platform's database? Blockchain node queries? A separate data warehouse? Where does trading volume data come from - ClearLoop's transaction log? Exchange APIs? How do these sources connect to whatever generates invoices? Walk me through the actual system flow.</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Automation vs manual work..."></textarea>
+                    <textarea class="answer-box" placeholder="Map custody system → trading system → billing system data flow..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">8</div>
-                        <div class="question-text">Where does the data live? Custody balances in one database, trading volume in another, staking rewards in a third? How do you bring it all together to generate one invoice per client?</div>
+                        <div class="question-text">Help me understand data latency: Trade settles on Binance at 9:47 AM UTC on January 15th. When does that trade volume appear in your billing system as a billable event? Real-time? End-of-day batch? Weekly reconciliation? What's the longest delay you've seen between event happening and data being available for invoicing?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Data source consolidation..."></textarea>
+                    <textarea class="answer-box" placeholder="Map event timestamp → data availability → billing readiness..."></textarea>
                 </div>
             </div>
 
@@ -529,78 +529,78 @@
         <div class="tab-content" id="tab-2">
             <div class="stage-intro">
                 <h2>Stage 3: Volatility & Variables</h2>
-                <p><strong>Goal:</strong> Understand how market volatility, asset fluctuations, and dynamic variables impact billing accuracy.</p>
+                <p><strong>Goal:</strong> Understand how asset price fluctuations and dynamic market variables translate to invoice calculations.</p>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">1</div>
-                    <div class="question-text">Bitcoin drops 40% in 10 days (we've seen it happen). A client has $100M worth on day 1, but it's $60M on day 10. How does this affect their custody fee? Do you recalculate daily? Lock in at deposit value? Use averages?</div>
+                    <div class="question-text">Walk me through a volatility scenario: Client deposits 1,000 BTC on January 1 when Bitcoin is $100,000 (AUC = $100M). By January 15, Bitcoin crashes to $60,000 (AUC now $60M). By January 31, Bitcoin recovers to $95,000 (AUC now $95M). The invoice line item for "Custody Fee" shows what dollar amount? And what AUC balance? Explain how you arrived at those numbers.</div>
                 </div>
-                <textarea class="answer-box" placeholder="Volatility handling approach..."></textarea>
+                <textarea class="answer-box" placeholder="Map price volatility → AUC calculation → invoice amount..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">2</div>
-                    <div class="question-text">Let's say you bill custody fees in USD but the client deposited 1,000 BTC. Do you track the USD value daily? At month-end? Who determines the exchange rate to use - Coinbase price? Binance? An aggregate index?</div>
+                    <div class="question-text">Help me understand the relationship between crypto quantity and USD valuation: Do you bill based on (A) the quantity of crypto held (1,000 BTC regardless of price), or (B) the USD value of that crypto (recalculated daily)? If option B, whose price feed determines "official" value - Coinbase? Binance? An index? What happens when price feeds disagree by 2-3%?</div>
                 </div>
-                <textarea class="answer-box" placeholder="USD valuation methodology..."></textarea>
+                <textarea class="answer-box" placeholder="Map crypto quantity vs. USD valuation → pricing source → calculation..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">3</div>
-                    <div class="question-text">Some assets are incredibly volatile (memecoins, low-cap tokens) while others are stable (USDC, USDT). Do you charge the same custody rate for a stablecoin as you do for a highly volatile altcoin? Why or why not?</div>
+                    <div class="question-text">Walk me through asset risk-based pricing: Client custodies $50M in USDC (stablecoin, pegged to $1), $50M in Bitcoin (volatile but established), and $50M in a low-cap altcoin that swings ±30% daily. Total AUC = $150M. Does your custody rate treat all three assets equally? Or do you charge different rates based on custody complexity/risk? How does this appear on the invoice?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Risk-based pricing..."></textarea>
+                <textarea class="answer-box" placeholder="Map asset risk profile → custody rate variation → line item structure..."></textarea>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Edge Cases</div>
+                <div class="subsection-title">Cross-Chain Pricing Architecture</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">4</div>
-                        <div class="question-text">A client has assets spread across 15 different blockchains. Bitcoin on Bitcoin network, ETH on Ethereum, but also wrapped Bitcoin (wBTC) on Ethereum. How do you price this? Same rate? Different rates per network?</div>
+                        <div class="question-text">Explain cross-chain custody pricing: Client has $30M Bitcoin (Bitcoin network), $30M ETH (Ethereum network), $30M wBTC (wrapped Bitcoin on Ethereum), $30M USDC (Ethereum network). All equal $120M total AUC. Do you charge: (A) Same rate across all assets? (B) Different rates per network (Bitcoin vs Ethereum)? (C) Different rates per asset type (native vs. wrapped vs. stablecoin)? Walk me through how this translates to invoice line items.</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Cross-chain pricing logic..."></textarea>
+                    <textarea class="answer-box" placeholder="Map asset type + network → rate logic → invoice structure..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">5</div>
-                        <div class="question-text">For staking - if Ethereum's APY drops from 5% to 3% mid-month, does your revenue share percentage change? Or does the client just earn less and you earn proportionally less?</div>
+                        <div class="question-text">For staking - help me understand APY fluctuation impact: Client stakes $50M Ethereum in January when APY is 5%. By February, network activity drops and APY falls to 3%. Your revenue share is 15% of rewards. On the invoice, do you show: (A) "Expected rewards at 5% APY: $208K, actual rewards at 3% APY: $125K, Copper's share: $18.75K"? (B) Just your revenue share amount with no context? Walk me through what information appears and why.</div>
                     </div>
-                    <textarea class="answer-box" placeholder="APY fluctuation handling..."></textarea>
+                    <textarea class="answer-box" placeholder="Map APY fluctuation → actual rewards → revenue share → invoice display..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">6</div>
-                        <div class="question-text">Trading fees on a $10M Bitcoin trade - are you charging based on the USD value at time of trade? Or are there situations where you charge based on BTC quantity regardless of dollar value?</div>
+                        <div class="question-text">Explain trade valuation timing: Client wants to sell $10M Bitcoin via ClearLoop. They submit order when BTC = $95,000. By the time trade executes 30 seconds later, BTC = $94,500 (price slippage). Your 0.10% trading fee is calculated on what amount - $10M (intended), $9.95M (executed), or something else? How does slippage affect your fee calculation?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Trade valuation basis..."></textarea>
+                    <textarea class="answer-box" placeholder="Map order submission → execution → slippage → fee calculation basis..."></textarea>
                 </div>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Invoice Presentation</div>
+                <div class="subsection-title">Invoice Transparency & Verification</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">7</div>
-                        <div class="question-text">When you invoice a client for custody fees, do you show them the calculation? "Your average daily balance was $X, rate was Y%, fee is $Z"? Or just show the final number? What do institutional clients expect to see?</div>
+                        <div class="question-text">Walk me through invoice calculation transparency: For a $50K custody fee, does your invoice show: (A) Just "$50K - Custody Fee"? (B) "Average Daily AUC: $120M, Rate: 0.5% annual, Monthly fee: $50K"? (C) Daily AUC breakdown table showing 31 days of balances? What level of detail do institutional clients require to verify accuracy?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Invoice transparency level..."></textarea>
+                    <textarea class="answer-box" placeholder="Map calculation inputs → invoice presentation level → client verification needs..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">8</div>
-                        <div class="question-text">If a client's rate changed mid-month (volume discount kicked in), how do you show that on the invoice? Two line items? Footnotes? Do clients ever dispute the calculations?</div>
+                        <div class="question-text">Help me understand mid-period rate changes on invoices: Client started January at 0.50% rate ($50M AUC). On January 15, they crossed $100M threshold (now 0.40% rate). The January invoice needs to show what - two separate line items for two different periods? A blended rate? A before/after comparison? Walk me through how you present this so the client understands they got the volume discount.</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Mid-period change display..."></textarea>
+                    <textarea class="answer-box" placeholder="Map rate change event → proration calculation → invoice presentation..."></textarea>
                 </div>
             </div>
 
@@ -614,78 +614,78 @@
         <div class="tab-content" id="tab-3">
             <div class="stage-intro">
                 <h2>Stage 4: Change Management</h2>
-                <p><strong>Goal:</strong> Understand how contracts evolve, how mid-term changes are handled, and the operational burden of amendments.</p>
+                <p><strong>Goal:</strong> Map the relationship between contract changes, pricing adjustments, and revenue recognition to understand amendment complexity.</p>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">1</div>
-                    <div class="question-text">A client signs up for custody-only in January. In March, they want to add trading. Walk me through what happens operationally. Who updates pricing? How is it reflected in billing? How long does this take?</div>
+                    <div class="question-text">Walk me through a service addition scenario: Pantera Capital signs a custody-only contract on January 1 (3-year term, $100M committed AUC, 0.45% annual rate). On March 15, they want to add ClearLoop trading. Explain the relationship between: (A) The original contract, (B) The amendment, (C) How pricing is affected (bundle discount?), (D) How the March invoice reflects both old service + new service. Walk me through each step.</div>
                 </div>
-                <textarea class="answer-box" placeholder="Service addition workflow..."></textarea>
+                <textarea class="answer-box" placeholder="Map contract → amendment → pricing change → invoice impact..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">2</div>
-                    <div class="question-text">You negotiate a rate change with a client - maybe they crossed $100M threshold and earned a lower rate. Does this apply to the full month retroactively? Or only from the day they crossed? How do you recalculate?</div>
+                    <div class="question-text">Help me understand proration mechanics: Client pays $10K/month for Treasury Management (billed monthly in advance, January 1 payment covers January service). On January 15, they upgrade to Premium tier ($25K/month). The January invoice should show what: (A) $10K for Jan 1-14, $25K prorated for Jan 15-31? (B) $10K Jan + $25K Feb (no proration, start fresh Feb 1)? (C) Something else? What determines this?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Rate change mechanics..."></textarea>
+                <textarea class="answer-box" placeholder="Map mid-month upgrade → proration logic → invoice treatment..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">3</div>
-                    <div class="question-text">Real scenario: Client deposits $50M on day 1. Adds another $100M on day 15 (now $150M total, new pricing tier). How many different calculations go into that month's invoice? Who does them?</div>
+                    <div class="question-text">Walk me through a complex scenario: Client has $50M AUC in January (rate: 0.50%). On January 15, they deposit $100M more (now $150M total, triggers Tier 2 rate: 0.40%). On January 25, they negotiate a custom enterprise rate: 0.35% going forward. The January invoice needs to show what calculation? How many rate changes? How many proration periods? Explain the math.</div>
                 </div>
-                <textarea class="answer-box" placeholder="Multi-tier month calculation..."></textarea>
+                <textarea class="answer-box" placeholder="Map multiple rate changes → proration periods → final calculation..."></textarea>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Contract Complexity</div>
+                <div class="subsection-title">Volume Threshold Mechanics</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">4</div>
-                        <div class="question-text">Do you have clients with special pricing arrangements? (First 3 months discounted, annual prepay discount, commit to $X AUC for Y months?) How do you track these exceptions and ensure billing is correct?</div>
+                        <div class="question-text">Help me understand retroactive vs. prospective discounting: Client's trading volume hits $50M on January 20 (triggers 0.08% rate, down from 0.10%). Do you: (A) Recalculate all January 1-19 trades at new 0.08% rate (retroactive)? (B) Apply 0.08% only to January 20-31 trades (prospective)? (C) Apply 0.08% to all future months but not current month? What is the relationship between threshold crossing date and rate application?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Special arrangement tracking..."></textarea>
+                    <textarea class="answer-box" placeholder="Map threshold event → retroactive vs. prospective → calculation impact..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">5</div>
-                        <div class="question-text">When a client wants to downgrade (reduce services or move assets out), is there a notice period? Minimum commitments? How do you handle the final prorated billing period?</div>
+                        <div class="question-text">Walk me through multi-product threshold interactions: Client qualifies for volume discounts on BOTH custody (crossed $100M AUC) AND trading (crossed $50M volume) in the same month. Do these trigger: (A) Independent discounts per product? (B) Compounding discounts (custody discount + trading discount + multi-product bundle discount)? (C) Only the highest discount applies? Explain the hierarchy.</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Downgrade mechanics..."></textarea>
+                    <textarea class="answer-box" placeholder="Map multiple discounts → application logic → final pricing..."></textarea>
                 </div>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Revenue Recognition</div>
+                <div class="subsection-title">Revenue Recognition Architecture</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">6</div>
-                        <div class="question-text">For accounting - when do you recognize custody revenue? When you send the invoice at month-end (service already delivered)? Or as the service is delivered throughout the month? Who determines this?</div>
+                        <div class="question-text">Explain the relationship between invoicing and revenue recognition: Client uses custody services throughout January (service delivered daily). You issue invoice on January 31 for $50K. Payment due February 15. Walk me through: (A) When do you recognize revenue - Jan 31? Feb 15? Throughout Jan as service delivered? (B) What accounting entries happen on each date? (C) How does ASC 606 determine this?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Revenue recognition timing..."></textarea>
+                    <textarea class="answer-box" placeholder="Map service delivery → invoicing → payment → revenue recognition timing..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">7</div>
-                        <div class="question-text">If you change a contract mid-year (say you gave a client a retroactive discount), how does Finance handle this? Do they adjust prior months' recognized revenue? Or just apply it going forward?</div>
+                        <div class="question-text">Walk me through amendment accounting: Client had a 3-year contract ($900K total: $300K/year Ã— 3 years). After Year 1, you negotiate a price increase to $350K/year for remaining 2 years. Is this: (A) A modification (treat as new contract, recognize $350K/year going forward)? (B) A correction (should have been $350K all along, book $50K catch-up in Year 2)? (C) Something else? What determines this classification and how does it affect revenue recognized?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Revenue adjustment approach..."></textarea>
+                    <textarea class="answer-box" placeholder="Map contract change → ASC 606 classification → revenue treatment..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">8</div>
-                        <div class="question-text">You mentioned agency lending where you share interest revenue with clients. How do you account for this - as principal (you earn 100%, pay out 75%) or as agent (you only recognize your 25%)? Does this vary by jurisdiction?</div>
+                        <div class="question-text">Help me understand revenue share accounting (Agency Lending): You lend client's $40M crypto, earn $100K interest, split 25% Copper / 75% Client. On the invoice, do you show: (A) Gross interest: $100K, Less: Client share (75%), Net: $25K? (B) Only your $25K share? For revenue recognition, do you book $100K gross (principal accounting) or $25K net (agent accounting)? What determines this?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Revenue share accounting..."></textarea>
+                    <textarea class="answer-box" placeholder="Map lending interest → revenue share → gross vs. net accounting..."></textarea>
                 </div>
             </div>
 
@@ -699,103 +699,104 @@
         <div class="tab-content" id="tab-4">
             <div class="stage-intro">
                 <h2>Stage 5: Scale & Growth</h2>
-                <p><strong>Goal:</strong> Understand growth constraints, pain points that intensify with scale, and what breaks first.</p>
+                <p><strong>Goal:</strong> Map the relationship between business growth and operational breaking points to identify where current systems fail at scale.</p>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">1</div>
-                    <div class="question-text">You have 400+ clients today. Where does your billing process start to crack? At 500 clients? 1,000? Is it the number of clients, or the complexity of what they're doing (more products, more assets, more jurisdictions)?</div>
+                    <div class="question-text">Help me understand your scaling constraints: You have 400 clients today. Walk me through what breaks first as you grow - is it: (A) Number of clients (500? 1000?), (B) Complexity per client (more products, more assets), (C) Geographic expansion (new entities), or (D) Product launches (new revenue streams)? What is the actual bottleneck and how do you know?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Scaling pain points..."></textarea>
+                <textarea class="answer-box" placeholder="Map growth vectors → operational bottleneck → breaking point..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">2</div>
-                    <div class="question-text">Your Hong Kong and Abu Dhabi expansion - does adding a new entity/jurisdiction mean someone has to manually configure new pricing rules, new currency conversions, new tax logic? Or is there a framework that makes this easier?</div>
+                    <div class="question-text">Walk me through geographic expansion impact: You're launching in Hong Kong and Abu Dhabi. For each new entity, explain the relationship between: (A) New legal entity setup, (B) New pricing/product configuration, (C) New currency/tax rules, (D) Billing system changes needed. How long does this take? Who does the work? What's manual vs. automated?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Geographic expansion complexity..."></textarea>
+                <textarea class="answer-box" placeholder="Map new entity → configuration requirements → operational effort..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">3</div>
-                    <div class="question-text">What's the manual work that you absolutely KNOW won't scale but you're doing it anyway because it's not broken enough yet? (Be honest - everyone has these)</div>
+                    <div class="question-text">Explain the relationship between customer growth and headcount: If you 3x customers (400 â†' 1,200) over 18 months, does your Finance/RevOps team need to 3x? 2x? Stay flat? Walk me through what work scales linearly with customer count vs. what work stays fixed. Where would you need to add people?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Known scaling bottlenecks..."></textarea>
+                <textarea class="answer-box" placeholder="Map customer growth → workload scaling → headcount requirements..."></textarea>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Error & Exception Handling</div>
+                <div class="subsection-title">Error Detection & Correction</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">4</div>
-                        <div class="question-text">What percentage of invoices get generated cleanly vs need manual review or correction? What are the most common errors? (Wrong rate applied? Missing usage data? Currency conversion issue? Volume discount not triggered?)</div>
+                        <div class="question-text">Walk me through your error distribution: Out of 400 monthly invoices, how many have errors requiring correction? Of those errors, what percentage are: (A) Wrong volume discount applied, (B) Missed AUC fluctuation, (C) Currency conversion issue, (D) Manual calculation mistake, (E) Data import failure, (F) Other? Map the error types to their root causes.</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Error frequency and types..."></textarea>
+                    <textarea class="answer-box" placeholder="Map invoice volume → error frequency → error types → root causes..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">5</div>
-                        <div class="question-text">When an invoice error happens - how do you discover it? Client calls and complains? Finance catches it in QA? Audit finds it 6 months later? How often does each scenario happen?</div>
+                        <div class="question-text">Help me understand error discovery mechanisms: When an invoice error happens, who finds it first - (A) Finance QA before sending (what % caught), (B) Client complains after receiving (what % caught), (C) Auditor finds 6 months later (what % caught), or (D) Never discovered (what % estimated)? Walk me through the detection → correction → prevention flow.</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Error detection mechanisms..."></textarea>
+                    <textarea class="answer-box" placeholder="Map error types → detection timing → correction workflow..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">6</div>
-                        <div class="question-text">Have you ever had a situation where a client's volume discount should have kicked in but didn't, and they got overbilled for months? How did you handle the correction - credit memo? Adjust future bills? Refund?</div>
+                        <div class="question-text">Walk me through a specific correction scenario: Client should have qualified for volume discount in March, April, May (3 months) but didn't - overbilled by $15K total. You discover this in June. Explain: (A) How correction appears on June invoice (credit memo? adjustment? footnote?), (B) How revenue recognition is corrected (reverse prior months?), (C) How you prevent recurrence. What's the relationship between the error, the correction, and the system change?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Correction scenario handling..."></textarea>
+                    <textarea class="answer-box" placeholder="Map error discovery → correction mechanism → accounting treatment → prevention..."></textarea>
                 </div>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Team & Time</div>
+                <div class="subsection-title">Operational Reality</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">7</div>
-                        <div class="question-text">How many people touch the billing process from start to finish? (Operations pulling usage data, Finance calculating fees, RevOps reviewing, Controllers doing rev rec, etc.) How many hours per month-end in total?</div>
+                        <div class="question-text">Map your month-end close process: From "January 31 11:59 PM" to "All invoices sent," walk me through: (A) Hour 0-24: What happens? (Data freeze? Exports? Calculations?), (B) Hour 24-48: What happens?, (C) Hour 48-72: What happens? At each stage, how many people touch the process? Where are the wait times? Where does work queue up?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Team involvement and time..."></textarea>
+                    <textarea class="answer-box" placeholder="Map timeline → activities → people → bottlenecks..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">8</div>
-                        <div class="question-text">If you 3x your customer base over the next 18 months, what happens? Do you need to 3x your Finance team? Or is there a way to scale without linear headcount growth?</div>
+                        <div class="question-text">Help me understand team allocation: Finance team spends X hours/month on billing operations vs. Y hours on strategic work (forecasting, analysis, board reporting). What's the current split? What should it be? What's the relationship between billing automation and Finance's ability to do higher-value work?</div>
+                    </div>
+                    <textarea class="answer-box" placeholder="Map time allocation → operational vs. strategic → desired state..."></textarea>
                 </div>
-                <textarea class="answer-box" placeholder="Headcount scaling projections..."></textarea>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Audit & Reporting</div>
+                <div class="subsection-title">Audit & Compliance Burden</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">9</div>
-                        <div class="question-text">When auditors come in, what billing/revenue documentation do they ask for? How long does it take to compile? Is everything in one system or scattered across databases and spreadsheets?</div>
+                        <div class="question-text">Walk me through audit documentation requirements: Auditors request: (A) Revenue recognition schedules, (B) Usage data supporting invoices, (C) Contract amendment history, (D) Pricing change approvals, (E) Multi-entity consolidation. For each, where does this data live today? How long to compile? Who pulls it together? Map data sources → compilation effort → audit deliverable.</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Audit documentation burden..."></textarea>
+                    <textarea class="answer-box" placeholder="Map audit requests → data sources → compilation time → documentation quality..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">10</div>
-                        <div class="question-text">Your board wants to see revenue by product, by geography, by customer cohort. How long does it take to generate these reports? Is it a button click or a 2-day Excel project?</div>
+                        <div class="question-text">Help me understand management reporting: Board wants revenue by (A) Product, (B) Geography, (C) Customer cohort, (D) Vintage (when customer signed), (E) Expansion vs. new. How long does it take to generate this report? Walk me through: Data lives in System X → exported to Excel → manual pivot tables → consolidated → formatted → delivered. What's the relationship between data fragmentation and reporting latency?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Management reporting effort..."></textarea>
+                    <textarea class="answer-box" placeholder="Map reporting requirements → data sources → manual effort → delivery time..."></textarea>
                 </div>
             </div>
 
             <div class="context-note">
-                <strong>Final Reflection:</strong><br>
-                If you could change ONE thing about how billing works today - not budget constraints, not politics, just pure wishlist - what would it be and why would it matter?
+                <strong>Final Mapping Exercise:</strong><br>
+                If you could eliminate ONE manual step in your quote-to-cash process - not "make it faster" but completely remove the need for human intervention - what would it be? Walk me through: (A) What happens today, (B) Why it requires manual work, (C) What the business impact would be if it were automated, (D) What downstream processes depend on this step.
             </div>
 
             <div class="navigation-buttons">
