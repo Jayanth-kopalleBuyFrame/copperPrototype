@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copper.co Business Discovery</title>
+    <title>Copper.co RCA Discovery</title>
     <style>
         * {
             margin: 0;
@@ -124,6 +124,16 @@
             line-height: 1.6;
         }
         
+        .rca-callout {
+            background: #000000;
+            color: #ffffff;
+            padding: 16px 20px;
+            margin: 24px 0;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
         .question-card {
             background: #ffffff;
             border-radius: 8px;
@@ -214,24 +224,6 @@
             background: #000000;
             margin-right: 12px;
             border-radius: 2px;
-        }
-        
-        .context-note {
-            background: #f5f5f5;
-            border-left: 4px solid #000000;
-            padding: 16px 20px;
-            margin: 24px 0;
-            border-radius: 4px;
-            font-size: 14px;
-            color: #333333;
-            border: 2px solid #e0e0e0;
-        }
-        
-        .context-note strong {
-            display: block;
-            margin-bottom: 8px;
-            color: #000000;
-            font-weight: 700;
         }
         
         .progress-bar {
@@ -341,467 +333,449 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🔷 Copper.co Business Discovery</h1>
-            <p>Understanding Digital Asset Custody Operations</p>
+            <h1>🔷 Copper.co • Revenue Cloud Discovery</h1>
+            <p>Quote-to-Cash Pain Point Mapping</p>
         </div>
 
         <div class="tabs-container">
             <div class="tabs" id="tabs">
-                <button class="tab active" onclick="showTab(0)">1. Product Economics</button>
-                <button class="tab" onclick="showTab(1)">2. Operational Complexity</button>
-                <button class="tab" onclick="showTab(2)">3. Volatility & Variables</button>
-                <button class="tab" onclick="showTab(3)">4. Change Management</button>
-                <button class="tab" onclick="showTab(4)">5. Scale & Growth</button>
+                <button class="tab active" onclick="showTab(0)">1. Product Config & Bundles</button>
+                <button class="tab" onclick="showTab(1)">2. Pricing & Approvals</button>
+                <button class="tab" onclick="showTab(2)">3. Quote-to-Order Handoff</button>
+                <button class="tab" onclick="showTab(3)">4. Order-to-Invoice Flow</button>
+                <button class="tab" onclick="showTab(4)">5. Revenue Recognition</button>
             </div>
         </div>
 
-        <!-- Stage 1: Product Economics -->
+        <!-- Stage 1: Product Setup & Configuration during Quoting -->
         <div class="tab-content active" id="tab-0">
             <div class="stage-intro">
-                <h2>Stage 1: Product Economics</h2>
-                <p><strong>Goal:</strong> Map the relationship between products, pricing variables, and invoice line items to understand billing architecture.</p>
+                <h2>Stage 1: Product Setup & Configuration during Quoting</h2>
+                <p><strong>Pain Point:</strong> CPQ complexity causes Sales to misquote modular services (Custody, ClearLoop, Staking, Prime Access) with different charge types, creating downstream billing errors.</p>
+            </div>
+
+            <div class="rca-callout">
+                🎯 RCA Solutions to Probe: Advanced Product Rules • Attribute-based Configuration • Guided Selling • Version-controlled Catalogs
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">1</div>
-                    <div class="question-text">Walk me through the relationship between an asset, a blockchain, and a storage type in your custody pricing model. If a client has Bitcoin in cold storage AND Ethereum in hot storage - are those two separate line items on an invoice? Do they have different rates? How does this translate to what you bill?</div>
+                    <div class="question-text">Walk me through how Sales quotes a multi-product bundle: Galaxy Digital wants Custody ($500M AUC commitment) + ClearLoop (trading integration) + Staking ($150M ETH). In CPQ, are there dependency rules that prevent quoting ClearLoop without Custody? Or can Sales accidentally create invalid product combinations? What happens downstream when Finance receives an order for ClearLoop without custody infrastructure?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Describe the asset → blockchain → storage type → price relationship..."></textarea>
+                <textarea class="answer-box" placeholder="Probe: Product dependency enforcement, invalid bundle detection, downstream impact..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">2</div>
-                    <div class="question-text">For staking revenue share - walk me through a typical scenario: Client stakes $50M Ethereum (4% APY) and $30M Solana (7% APY) for one month. How many line items appear on their invoice? Do you show gross rewards earned, then subtract your share? Or just bill your portion? How does the client verify the calculation?</div>
+                    <div class="question-text">Help me understand AUM tier configuration: Your rate card shows tiered custody pricing (0.5% for $0-$50M, 0.4% for $50M-$100M, 0.35% for $100M+). When Sales quotes $500M AUC deal, does CPQ automatically apply the $100M+ tier? Or do they manually select the tier? If manual, how often do they misquote by selecting wrong tier (e.g., $50M tier for $500M deal)?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Map staking rewards → invoice line items..."></textarea>
+                <textarea class="answer-box" placeholder="Probe: Automatic tier selection, manual override errors, quote accuracy..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">3</div>
-                    <div class="question-text">What is the relationship between a trade, an exchange, and a fee in your ClearLoop billing? If a client executes 50 trades across 5 exchanges in a month - does your invoice show 50 line items (one per trade)? Or 5 line items (aggregated by exchange)? Or 1 line item (total trading fee)? Walk me through what the client actually sees.</div>
+                    <div class="question-text">Explain version drift scenarios: Galaxy Digital has a custom enterprise rate card from 2022 (0.30% custody). Your standard 2024 rate card shows 0.45%. When Sales creates a renewal quote in 2024, how do they know to use Galaxy's custom 0.30% instead of standard 0.45%? Is there a customer-specific price book? Or do they check a spreadsheet/Slack? What happens if they quote at wrong rate?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Explain trade → exchange → invoice structure..."></textarea>
-            </div>
-
-            <div class="question-card">
-                <div class="question-header">
-                    <div class="question-number">4</div>
-                    <div class="question-text">Help me understand multi-product scenarios: If Pantera Capital uses custody ($200M AUC), trading ($50M volume), and staking ($80M staked) in January - do they receive one invoice with three sections? Three separate invoices? How do bundle discounts appear - as separate line items or adjustments at the bottom?</div>
-                </div>
-                <textarea class="answer-box" placeholder="Map multi-product usage → invoice presentation..."></textarea>
+                <textarea class="answer-box" placeholder="Probe: Customer-specific pricing management, rate card versions, quote errors..."></textarea>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Volume Tier Architecture</div>
+                <div class="subsection-title">Parent-Child Product Relationships</div>
+
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">4</div>
+                        <div class="question-text">Walk me through Custody product hierarchy: Is "Custody" one product or multiple child products (Custody Core + Bitcoin Storage + Ethereum Storage + Staking)?  When Sales quotes "$500M Custody," does that automatically create child line items for each blockchain/service? Or is it one flat line item that Finance later breaks down manually for billing? If Finance breaks it down manually, how often do they make mistakes?</div>
+                    </div>
+                    <textarea class="answer-box" placeholder="Probe: Product hierarchy modeling, automatic child generation, manual breakdown errors..."></textarea>
+                </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">5</div>
-                        <div class="question-text">Walk me through volume tier mechanics: Client starts January with $50M AUC (Tier 1: 0.5% rate). On January 15, they deposit $100M more (now $150M total, qualifies for Tier 2: 0.4% rate). On the invoice, do you show: (A) Days 1-15 @ 0.5%, Days 16-31 @ 0.4%? (B) Entire month @ blended rate? (C) Something else? What actually appears on the invoice?</div>
+                        <div class="question-text">Help me understand asset class pricing attributes: Client custodies Bitcoin (cold storage, 0.5%), Ethereum (hot storage, 0.6%), USDC stablecoin (0.3%). Are these three different SKUs in CPQ? Or one "Custody" SKU with attributes (blockchain, storage type, risk tier)? If separate SKUs, how many total custody SKUs exist (60 blockchains × 3 storage types = 180 SKUs)? If attributes, does CPQ dynamically price based on attribute combinations?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Explain tier threshold crossing → invoice calculation..."></textarea>
-                </div>
-
-                <div class="question-card">
-                    <div class="question-header">
-                        <div class="question-number">6</div>
-                        <div class="question-text">For trading volume discounts - explain the relationship between cumulative monthly volume, threshold crossings, and retroactive pricing. If standard rate is 0.10% but volume discount at $50M drops it to 0.08%, and client crosses $50M on day 20 - do you recalculate the first 19 days of trades? How does the invoice reflect this?</div>
-                    </div>
-                    <textarea class="answer-box" placeholder="Map volume accumulation → threshold → retroactive adjustment..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: SKU proliferation vs. attribute-based pricing, dynamic rate calculation..."></textarea>
                 </div>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Multi-Entity Architecture</div>
+                <div class="subsection-title">Contract Term Complexity</div>
 
                 <div class="question-card">
                     <div class="question-header">
-                        <div class="question-number">7</div>
-                        <div class="question-text">Help me understand your entity structure: You have Copper UK, Copper US, Copper Hong Kong, Copper Securities (UAE). If Brevan Howard (UK-based) custodies assets through Copper HK for APAC trading hours, wants invoicing in GBP, but the legal entity providing service is Copper HK - who issues the invoice? What currency? Does the entity providing service affect the rate?</div>
+                        <div class="question-number">6</div>
+                        <div class="question-text">Explain annual vs. evergreen term conflicts: Pantera signs 3-year custody contract (annual billing, $300K/year, ends Dec 2025). In March 2024, they add ClearLoop (evergreen, monthly billing). CPQ now has one account with two term structures. How does Sales configure this? Two separate quotes? One quote with mixed terms? What happens at Dec 2025 when custody renews but ClearLoop doesn't?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map client location → service entity → billing entity → currency..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: Mixed term management, renewal alignment, contract confusion..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
-                        <div class="question-number">8</div>
-                        <div class="question-text">Walk me through a cross-entity scenario: Same client uses Copper UK for custody ($100M), Copper Securities UAE for tokenized bond trading ($20M), and both services in the same month. Do they receive two invoices from two entities? One consolidated invoice? How do transfer pricing rules between your entities affect what the client pays?</div>
+                        <div class="question-number">7</div>
+                        <div class="question-text">Walk me through quote-to-order conversion timing: Sales closes deal Dec 15. Customer wants Jan 1 start date. But due to KYC/onboarding delays, service actually activates Feb 15. In CPQ/Order, what date is recorded as "contract start" - Dec 15 (signature), Jan 1 (intended), or Feb 15 (actual)? If Jan 1 is in system but Feb 15 is reality, does Finance bill for Jan (no service delivered)? How is this mismatch resolved?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Explain multi-entity service delivery → billing consolidation..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: Start date alignment, activation delays, billing period errors..."></textarea>
                 </div>
             </div>
 
             <div class="navigation-buttons">
                 <button class="nav-button prev" onclick="prevTab()" disabled>← Previous</button>
-                <button class="nav-button next" onclick="nextTab()">Next →</button>
+                <button class="nav-button next" onclick="nextTab()">Next: Pricing & Approvals →</button>
             </div>
         </div>
 
-        <!-- Stage 2: Operational Complexity -->
+        <!-- Stage 2: Pricing Gaps / Leakage / Approval Delays -->
         <div class="tab-content" id="tab-1">
             <div class="stage-intro">
-                <h2>Stage 2: Operational Complexity</h2>
-                <p><strong>Goal:</strong> Map the flow from billable events to invoice line items to understand data architecture and calculation dependencies.</p>
+                <h2>Stage 2: Pricing Gaps, Margin Leakage & Approval Delays</h2>
+                <p><strong>Pain Point:</strong> Deep institutional discounts (£500M+ deals) require manual approvals, lack margin visibility, and create non-standard contracts that override pricing logic.</p>
+            </div>
+
+            <div class="rca-callout">
+                🎯 RCA Solutions to Probe: Approval Workflows • Pricing Waterfalls • Real-Time Margin Analysis • Rebate/Commitment Tracking
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">1</div>
-                    <div class="question-text">Walk me through Assets Under Custody calculation: Client has Bitcoin worth $50M on day 1. Bitcoin drops 30% by day 15 (now $35M). Client deposits another $20M Bitcoin on day 20. Bitcoin rallies 40% by day 31. What number appears on the invoice as "Assets Under Custody" for the month - and how did you arrive at it?</div>
+                    <div class="question-text">Walk me through discount approval workflow: Sales quotes Galaxy Digital at 50% discount (0.25% vs 0.50% standard). What approval chain triggers? (Sales Manager → VP Sales → RevOps → CFO?) How long does approval take? Where does it get stuck? If deal is time-sensitive (client wants answer in 48 hours), can approval process meet that deadline?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Map daily AUC snapshots → monthly billable amount..."></textarea>
+                <textarea class="answer-box" placeholder="Probe: Approval routing, time delays, deal velocity impact..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">2</div>
-                    <div class="question-text">Help me understand multi-blockchain aggregation: Client has $20M Bitcoin (Bitcoin network), $30M ETH (Ethereum network), $15M USDC (Ethereum network), $10M SOL (Solana network), $5M wBTC (wrapped Bitcoin on Ethereum). What is their "total AUC" for billing purposes? Do you aggregate across all chains? Are there different rates per chain? How does this appear on the invoice?</div>
+                    <div class="question-text">Help me understand margin visibility during quoting: When Sales quotes that 50% discount, can they see margin impact in CPQ? Example: "Standard rate $500K revenue, cost to serve $200K, margin 60%. Discounted rate $250K revenue, cost $200K, margin 20%." Is this calculation visible? Or do they quote blind and Finance analyzes margin later? If later, how often are unprofitable deals approved by mistake?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Explain cross-chain aggregation → rate application → line items..."></textarea>
+                <textarea class="answer-box" placeholder="Probe: Real-time margin calculation, cost model integration, profitability visibility..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">3</div>
-                    <div class="question-text">Walk me through your month-end cutoff: January 31st falls on a Friday. Do you freeze AUC data at 11:59 PM UTC? Midnight in each client's timezone? What if a client deposits $50M at 11:45 PM on Jan 31 - is that January's AUC or February's? Who determines this and how is it documented?</div>
+                    <div class="question-text">Explain pricing waterfall stacking: Client qualifies for: (A) Volume tier discount: -10%, (B) Multi-product bundle: -10%, (C) Strategic partner: -10%, (D) Negotiated enterprise: -20%. Can these stack? If yes, that's 50% total discount (0.50% â†' 0.25%). Or do some override others? Who determines hierarchy - Sales, Finance, or hardcoded in CPQ? If Sales can stack discounts that shouldn't stack, how often does this create margin leakage?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Map cutoff timing → data capture → billing period assignment..."></textarea>
+                <textarea class="answer-box" placeholder="Probe: Discount stacking rules, override logic, leakage frequency..."></textarea>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Event-to-Invoice Mapping</div>
+                <div class="subsection-title">Non-Standard Contract Complexity</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">4</div>
-                        <div class="question-text">Explain the relationship between a ClearLoop trade and an invoice line item: Client executes 127 trades in January across Binance (73 trades), Coinbase (41 trades), Kraken (13 trades). Total volume: $42M. On the invoice, do you show: (A) 127 separate line items? (B) 3 line items aggregated by exchange? (C) 1 line item with total fee? Walk me through what determines this.</div>
+                        <div class="question-text">Walk me through bespoke "all-in" packages: Trading desk negotiates $2M/year flat fee for unlimited custody + trading + staking (no usage-based charges). How does CPQ handle this? Is it a special "Enterprise Unlimited" SKU? Or do you quote standard products but override all pricing to $0 and add one flat fee line item? If override method, does Finance later receive order with $0 products and get confused?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map individual trades → aggregation logic → invoice presentation..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: Non-standard contract modeling, flat fee configuration, Finance confusion..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">5</div>
-                        <div class="question-text">For staking across multiple blockchains - help me understand timing: Ethereum rewards are earned daily but claimable weekly. Solana rewards are earned and distributed daily. Cardano rewards are earned per epoch (5 days). Client stakes all three. When do you bill your revenue share? When earned? When claimable? When claimed? How do you track 30+ days of different reward schedules across 20+ blockchains?</div>
+                        <div class="question-text">Help me understand commitment-based pricing: Client commits to $100M minimum AUC for 12 months (0.35% rate vs 0.45% standard). What happens if Month 6 shows $60M AUC (40% below commitment)? Does billing system: (A) Automatically bill at 0.35% despite shortfall, (B) Flag shortfall for manual Finance review, (C) Auto-calculate make-good fee for gap? If manual review, how often do shortfalls get missed until year-end?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map blockchain-specific reward timing → revenue share calculation..."></textarea>
-                </div>
-
-                <div class="question-card">
-                    <div class="question-header">
-                        <div class="question-number">6</div>
-                        <div class="question-text">Walk me through DeFi interaction billing: Client uses Copper Connect for 8 Uniswap swaps ($250 each), 3 Aave lending transactions ($500 each), 2 Compound yield farming setups ($1,000 each). Are these all billed at the same rate? Different rates per protocol type? Per transaction size? How does gas fee variation (Ethereum gas was $5 on day 1, $80 on day 15) affect what you bill?</div>
-                    </div>
-                    <textarea class="answer-box" placeholder="Map DeFi interaction types → pricing logic → gas fee handling..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: Commitment tracking, shortfall detection, make-good calculation automation..."></textarea>
                 </div>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Data Source Architecture</div>
+                <div class="subsection-title">Rebate & Clawback Mechanics</div>
 
                 <div class="question-card">
                     <div class="question-header">
-                        <div class="question-number">7</div>
-                        <div class="question-text">Map your data sources: Where does AUC data originate - your custody platform's database? Blockchain node queries? A separate data warehouse? Where does trading volume data come from - ClearLoop's transaction log? Exchange APIs? How do these sources connect to whatever generates invoices? Walk me through the actual system flow.</div>
+                        <div class="question-number">6</div>
+                        <div class="question-text">Walk me through retroactive rebate scenarios: Client negotiates "if we hit $500M AUC by Q4, Copper rebates 10% of all Q3+Q4 custody fees." Where is this tracked - contract clause? Spreadsheet? Someone's memory? How does Finance know when $500M is hit? Who calculates rebate amount (Q3: $150K, Q4: $160K = $31K rebate)? How is rebate issued (credit memo? check? offset future invoices)? If not tracked systematically, how often are contractual rebates forgotten?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map custody system → trading system → billing system data flow..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: Rebate term tracking, threshold detection, calculation automation, issuance workflow..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
-                        <div class="question-number">8</div>
-                        <div class="question-text">Help me understand data latency: Trade settles on Binance at 9:47 AM UTC on January 15th. When does that trade volume appear in your billing system as a billable event? Real-time? End-of-day batch? Weekly reconciliation? What's the longest delay you've seen between event happening and data being available for invoicing?</div>
+                        <div class="question-number">7</div>
+                        <div class="question-text">Explain margin leakage detection: Finance discovers in Q3 audit that Galaxy Digital has been billed at 0.20% for 6 months instead of approved 0.25% (unauthorized 20% additional discount = $150K revenue leak). How was this discovered? Manual contract review? Client inquiry? Audit? If manual review, how often is leakage not discovered for quarters or years? What percentage of revenue do you estimate leaks through pricing errors annually?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map event timestamp → data availability → billing readiness..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: Leakage detection mechanisms, error discovery timeline, revenue impact..."></textarea>
                 </div>
             </div>
 
             <div class="navigation-buttons">
                 <button class="nav-button prev" onclick="prevTab()">← Previous</button>
-                <button class="nav-button next" onclick="nextTab()">Next →</button>
+                <button class="nav-button next" onclick="nextTab()">Next: Quote-to-Order →</button>
             </div>
         </div>
 
-        <!-- Stage 3: Volatility & Variables -->
+        <!-- Stage 3: Quote to Order Generation & Operational Handoff -->
         <div class="tab-content" id="tab-2">
             <div class="stage-intro">
-                <h2>Stage 3: Volatility & Variables</h2>
-                <p><strong>Goal:</strong> Understand how asset price fluctuations and dynamic market variables translate to invoice calculations.</p>
+                <h2>Stage 3: Quote-to-Order Generation & Operational Handoff</h2>
+                <p><strong>Pain Point:</strong> Multi-entity deals (UK, US, HK, UAE) require coordinated activation (wallet setup, ClearLoop connectivity, API integration) but handoffs between Sales and Ops are manual and inconsistent.</p>
+            </div>
+
+            <div class="rca-callout">
+                🎯 RCA Solutions to Probe: Multi-Entity Order Management • Order Workflow Orchestration • Service Cloud Integration • Contract Amendment Framework
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">1</div>
-                    <div class="question-text">Walk me through a volatility scenario: Client deposits 1,000 BTC on January 1 when Bitcoin is $100,000 (AUC = $100M). By January 15, Bitcoin crashes to $60,000 (AUC now $60M). By January 31, Bitcoin recovers to $95,000 (AUC now $95M). The invoice line item for "Custody Fee" shows what dollar amount? And what AUC balance? Explain how you arrived at those numbers.</div>
+                    <div class="question-text">Walk me through quote-to-order conversion: Sales marks Galaxy Digital deal "Closed-Won" on Dec 15. What happens next? (A) CPQ auto-generates Order? (B) Sales Ops manually creates Order from Quote? (C) Finance creates Order when they receive contract? Who owns this step? How long does it take? If manual, what percentage of deals have delays between "Closed" and "Order Created"?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Map price volatility → AUC calculation → invoice amount..."></textarea>
+                <textarea class="answer-box" placeholder="Probe: Conversion automation, ownership gaps, delay frequency..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">2</div>
-                    <div class="question-text">Help me understand the relationship between crypto quantity and USD valuation: Do you bill based on (A) the quantity of crypto held (1,000 BTC regardless of price), or (B) the USD value of that crypto (recalculated daily)? If option B, whose price feed determines "official" value - Coinbase? Binance? An index? What happens when price feeds disagree by 2-3%?</div>
+                    <div class="question-text">Help me understand multi-entity order orchestration: Same Galaxy Digital deal requires: (A) Copper US entity for custody (legal/regulatory), (B) Copper HK entity for APAC ClearLoop access, (C) Copper UK for staking infrastructure. Does Sales create: (1) Three separate quotes for three entities, (2) One master quote that generates three entity orders, or (3) One quote with manual Finance splitout later? If manual splitout, how often do entity assignments get wrong?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Map crypto quantity vs. USD valuation → pricing source → calculation..."></textarea>
+                <textarea class="answer-box" placeholder="Probe: Multi-entity configuration, order generation, entity assignment errors..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">3</div>
-                    <div class="question-text">Walk me through asset risk-based pricing: Client custodies $50M in USDC (stablecoin, pegged to $1), $50M in Bitcoin (volatile but established), and $50M in a low-cap altcoin that swings ±30% daily. Total AUC = $150M. Does your custody rate treat all three assets equally? Or do you charge different rates based on custody complexity/risk? How does this appear on the invoice?</div>
+                    <div class="question-text">Explain operational activation triggers: Order created Jan 5 with products: Custody ($500M BTC), ClearLoop (Binance, Coinbase, Kraken), Prime Access (API). Operations needs to: (A) Generate MPC key shards, (B) Provision BTC wallet, (C) Configure exchange APIs, (D) Enable Prime API access. How does Ops know to do this - Order record? Email? Slack? If manual notification, how often do provisioning steps get missed or delayed?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Map asset risk profile → custody rate variation → line item structure..."></textarea>
+                <textarea class="answer-box" placeholder="Probe: Activation workflow, task generation, communication gaps..."></textarea>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Cross-Chain Pricing Architecture</div>
+                <div class="subsection-title">Order-to-Service Cloud Synchronization</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">4</div>
-                        <div class="question-text">Explain cross-chain custody pricing: Client has $30M Bitcoin (Bitcoin network), $30M ETH (Ethereum network), $30M wBTC (wrapped Bitcoin on Ethereum), $30M USDC (Ethereum network). All equal $120M total AUC. Do you charge: (A) Same rate across all assets? (B) Different rates per network (Bitcoin vs Ethereum)? (C) Different rates per asset type (native vs. wrapped vs. stablecoin)? Walk me through how this translates to invoice line items.</div>
+                        <div class="question-text">Walk me through onboarding case creation: When Order is created with "ClearLoop Integration" product, does Service Cloud automatically create: (1) Implementation Case, (2) API Integration Task, (3) Exchange Connectivity Checklist? Or does someone manually create cases? If manual, how often do onboarding tasks fall through cracks? What percentage of deals have 30+ day activation delays due to case management gaps?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map asset type + network → rate logic → invoice structure..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: Case auto-creation, task tracking, delay root causes..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">5</div>
-                        <div class="question-text">For staking - help me understand APY fluctuation impact: Client stakes $50M Ethereum in January when APY is 5%. By February, network activity drops and APY falls to 3%. Your revenue share is 15% of rewards. On the invoice, do you show: (A) "Expected rewards at 5% APY: $208K, actual rewards at 3% APY: $125K, Copper's share: $18.75K"? (B) Just your revenue share amount with no context? Walk me through what information appears and why.</div>
+                        <div class="question-text">Help me understand order line sync to provisioning systems: Order shows "Custody: Bitcoin (cold), Ethereum (hot), Solana (warm)." This data needs to reach: (A) Wallet provisioning system (generate 3 wallets), (B) Storage allocation system (assign cold/hot/warm), (C) Billing system (track 3 separate usage streams). How does Order data flow to these systems - API integration? Manual data entry? CSV export/import? If manual, how often do provisioning specs not match what was sold?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map APY fluctuation → actual rewards → revenue share → invoice display..."></textarea>
-                </div>
-
-                <div class="question-card">
-                    <div class="question-header">
-                        <div class="question-number">6</div>
-                        <div class="question-text">Explain trade valuation timing: Client wants to sell $10M Bitcoin via ClearLoop. They submit order when BTC = $95,000. By the time trade executes 30 seconds later, BTC = $94,500 (price slippage). Your 0.10% trading fee is calculated on what amount - $10M (intended), $9.95M (executed), or something else? How does slippage affect your fee calculation?</div>
-                    </div>
-                    <textarea class="answer-box" placeholder="Map order submission → execution → slippage → fee calculation basis..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: System integration architecture, data flow automation, spec mismatch rate..."></textarea>
                 </div>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Invoice Transparency & Verification</div>
+                <div class="subsection-title">Amendment & Renewal Handling</div>
 
                 <div class="question-card">
                     <div class="question-header">
-                        <div class="question-number">7</div>
-                        <div class="question-text">Walk me through invoice calculation transparency: For a $50K custody fee, does your invoice show: (A) Just "$50K - Custody Fee"? (B) "Average Daily AUC: $120M, Rate: 0.5% annual, Monthly fee: $50K"? (C) Daily AUC breakdown table showing 31 days of balances? What level of detail do institutional clients require to verify accuracy?</div>
+                        <div class="question-number">6</div>
+                        <div class="question-text">Walk me through mid-contract service addition: Pantera has 3-year Custody contract (started Jan 2023, ends Dec 2025). In June 2024, they buy ClearLoop add-on. How does this work in CPQ/Orders: (A) Amendment Order created, linked to original Order? (B) Completely new Order? (C) Manual contract update outside CPQ? If amendment order, does it auto-extend original contract term or create separate ClearLoop term (evergreen)?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map calculation inputs → invoice presentation level → client verification needs..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: Amendment workflow, order linkage, term alignment..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
-                        <div class="question-number">8</div>
-                        <div class="question-text">Help me understand mid-period rate changes on invoices: Client started January at 0.50% rate ($50M AUC). On January 15, they crossed $100M threshold (now 0.40% rate). The January invoice needs to show what - two separate line items for two different periods? A blended rate? A before/after comparison? Walk me through how you present this so the client understands they got the volume discount.</div>
+                        <div class="question-number">7</div>
+                        <div class="question-text">Explain renewal order automation: Galaxy Digital's contract renews Dec 31, 2024. Does system: (A) Auto-generate renewal quote/order in November for Sales review? (B) Send reminder but Sales manually creates renewal? (C) Nothing automatic, Sales remembers to renew? If manual renewal creation, what percentage of renewals are created late (after expiration date), causing service disruption or billing gaps?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map rate change event → proration calculation → invoice presentation..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: Renewal automation, reminder triggers, late renewal frequency..."></textarea>
                 </div>
             </div>
 
             <div class="navigation-buttons">
                 <button class="nav-button prev" onclick="prevTab()">← Previous</button>
-                <button class="nav-button next" onclick="nextTab()">Next →</button>
+                <button class="nav-button next" onclick="nextTab()">Next: Order-to-Invoice →</button>
             </div>
         </div>
 
-        <!-- Stage 4: Change Management -->
+        <!-- Stage 4: Sales → Billing / Finance Handoff -->
         <div class="tab-content" id="tab-3">
             <div class="stage-intro">
-                <h2>Stage 4: Change Management</h2>
-                <p><strong>Goal:</strong> Map the relationship between contract changes, pricing adjustments, and revenue recognition to understand amendment complexity.</p>
+                <h2>Stage 4: Order-to-Invoice Flow (Sales → Billing → Finance)</h2>
+                <p><strong>Pain Point:</strong> Hybrid revenue model (recurring custody, transactional trading, one-time integration) requires usage data integration, but Finance receives incorrect term dates and usage isn't automatically fed into billing.</p>
+            </div>
+
+            <div class="rca-callout">
+                🎯 RCA Solutions to Probe: Billing Central Integration • Usage-Based Billing • Multi-Charge Type Handling • GL Integration
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">1</div>
-                    <div class="question-text">Walk me through a service addition scenario: Pantera Capital signs a custody-only contract on January 1 (3-year term, $100M committed AUC, 0.45% annual rate). On March 15, they want to add ClearLoop trading. Explain the relationship between: (A) The original contract, (B) The amendment, (C) How pricing is affected (bundle discount?), (D) How the March invoice reflects both old service + new service. Walk me through each step.</div>
+                    <div class="question-text">Walk me through order-to-billing schedule conversion: Order created Jan 5 with: (A) Platform subscription: $10K/month (recurring, billed in advance), (B) Custody: 0.4% of AUC (usage, billed in arrears), (C) Onboarding fee: $50K (one-time). How does Finance know to bill these differently? Is billing schedule auto-created from Order? Or does Finance manually configure billing for each deal? If manual, how long does setup take?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Map contract → amendment → pricing change → invoice impact..."></textarea>
+                <textarea class="answer-box" placeholder="Probe: Billing schedule automation, multi-charge type configuration, setup time..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">2</div>
-                    <div class="question-text">Help me understand proration mechanics: Client pays $10K/month for Treasury Management (billed monthly in advance, January 1 payment covers January service). On January 15, they upgrade to Premium tier ($25K/month). The January invoice should show what: (A) $10K for Jan 1-14, $25K prorated for Jan 15-31? (B) $10K Jan + $25K Feb (no proration, start fresh Feb 1)? (C) Something else? What determines this?</div>
+                    <div class="question-text">Help me understand usage data integration: Custody system tracks daily AUC (365 snapshots/year per client). ClearLoop logs every trade (thousands per client per month). Where does this data go? (A) Billing system imports via API? (B) Finance exports CSVs manually? (C) Data warehouse aggregates then feeds billing? If manual exports, how many person-hours per month-end? What percentage of usage data has import errors (missing days, wrong amounts)?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Map mid-month upgrade → proration logic → invoice treatment..."></textarea>
+                <textarea class="answer-box" placeholder="Probe: Usage data flow architecture, automation level, error rate, labor hours..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">3</div>
-                    <div class="question-text">Walk me through a complex scenario: Client has $50M AUC in January (rate: 0.50%). On January 15, they deposit $100M more (now $150M total, triggers Tier 2 rate: 0.40%). On January 25, they negotiate a custom enterprise rate: 0.35% going forward. The January invoice needs to show what calculation? How many rate changes? How many proration periods? Explain the math.</div>
+                    <div class="question-text">Explain contract term vs billing term mismatch: Order shows contract start "Jan 1" but service actually activated "Feb 15" (45 day delay). Finance billing system still shows "Jan 1 start." Result: Jan invoice generated for $40K (no service delivered). How does Finance discover this error - Client disputes invoice? Ops flags delay? Audit catch? If not caught immediately, how often are invoices sent for services not yet delivered?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Map multiple rate changes → proration periods → final calculation..."></textarea>
+                <textarea class="answer-box" placeholder="Probe: Activation date synchronization, billing start date errors, dispute frequency..."></textarea>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Volume Threshold Mechanics</div>
+                <div class="subsection-title">Invoice Generation Complexity</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">4</div>
-                        <div class="question-text">Help me understand retroactive vs. prospective discounting: Client's trading volume hits $50M on January 20 (triggers 0.08% rate, down from 0.10%). Do you: (A) Recalculate all January 1-19 trades at new 0.08% rate (retroactive)? (B) Apply 0.08% only to January 20-31 trades (prospective)? (C) Apply 0.08% to all future months but not current month? What is the relationship between threshold crossing date and rate application?</div>
+                        <div class="question-text">Walk me through multi-charge type invoice generation: Galaxy Digital's January invoice needs: (A) Platform fee: $10K (flat, already paid in advance), (B) Custody fee: $210K (usage: avg $525M AUC × 0.4%), (C) Trading fee: $45K (usage: $45M volume × 0.10%), (D) Staking revenue share: $8K (Copper's 20% of $40K rewards). Can billing system generate ONE invoice with 4 different charge types? Or does Finance manually combine? If manual, how long does invoice creation take per client?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map threshold event → retroactive vs. prospective → calculation impact..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: Multi-charge type handling, invoice consolidation, generation time..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">5</div>
-                        <div class="question-text">Walk me through multi-product threshold interactions: Client qualifies for volume discounts on BOTH custody (crossed $100M AUC) AND trading (crossed $50M volume) in the same month. Do these trigger: (A) Independent discounts per product? (B) Compounding discounts (custody discount + trading discount + multi-product bundle discount)? (C) Only the highest discount applies? Explain the hierarchy.</div>
+                        <div class="question-text">Help me understand bespoke term billing: Client has negotiated terms: "Custody billed quarterly in arrears, Trading billed monthly in arrears, Platform billed annually in advance." Standard billing is monthly for everything. How does Finance configure this custom billing cadence? Can billing system handle per-product billing schedules? Or does Finance manually generate off-cycle invoices? If manual, how many clients have bespoke billing terms?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map multiple discounts → application logic → final pricing..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: Custom billing cadence configuration, manual invoice generation, client volume..."></textarea>
                 </div>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Revenue Recognition Architecture</div>
+                <div class="subsection-title">ERP Integration & GL Mapping</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">6</div>
-                        <div class="question-text">Explain the relationship between invoicing and revenue recognition: Client uses custody services throughout January (service delivered daily). You issue invoice on January 31 for $50K. Payment due February 15. Walk me through: (A) When do you recognize revenue - Jan 31? Feb 15? Throughout Jan as service delivered? (B) What accounting entries happen on each date? (C) How does ASC 606 determine this?</div>
+                        <div class="question-text">Walk me through invoice-to-ERP flow: Invoice generated for £250K in billing system. How does this flow to ERP (NetSuite/Workday)? (A) Auto-sync via API creates AR invoice? (B) Finance manually exports CSV and imports to ERP? (C) Re-key invoice data manually? If manual, how many hours per month-end? What percentage of invoices have GL coding errors (wrong revenue account, wrong entity)?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map service delivery → invoicing → payment → revenue recognition timing..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: ERP integration automation, manual effort, coding error rate..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">7</div>
-                        <div class="question-text">Walk me through amendment accounting: Client had a 3-year contract ($900K total: $300K/year Ã— 3 years). After Year 1, you negotiate a price increase to $350K/year for remaining 2 years. Is this: (A) A modification (treat as new contract, recognize $350K/year going forward)? (B) A correction (should have been $350K all along, book $50K catch-up in Year 2)? (C) Something else? What determines this classification and how does it affect revenue recognized?</div>
-                    </div>
-                    <textarea class="answer-box" placeholder="Map contract change → ASC 606 classification → revenue treatment..."></textarea>
+                        <div class="question-text">Explain multi-entity GL complexity: Invoice has 3 line items: (A) Custody (Copper UK entity, UK GAAP, GBP), (B) Securities trading (Copper UAE entity, UAE regs, AED), (C) ClearLoop (Copper US entity, US GAAP, USD). Does billing system automatically: (1) Split invoice by entity? (2) Apply entity-specific GL codes? (3) Generate entity-specific journal entries? Or does Finance manually split post-billing? If manual, how often do entity allocations get wrong?</div>
                 </div>
-
-                <div class="question-card">
-                    <div class="question-header">
-                        <div class="question-number">8</div>
-                        <div class="question-text">Help me understand revenue share accounting (Agency Lending): You lend client's $40M crypto, earn $100K interest, split 25% Copper / 75% Client. On the invoice, do you show: (A) Gross interest: $100K, Less: Client share (75%), Net: $25K? (B) Only your $25K share? For revenue recognition, do you book $100K gross (principal accounting) or $25K net (agent accounting)? What determines this?</div>
-                    </div>
-                    <textarea class="answer-box" placeholder="Map lending interest → revenue share → gross vs. net accounting..."></textarea>
-                </div>
+                <textarea class="answer-box" placeholder="Probe: Multi-entity invoice splitting, GL automation, allocation errors..."></textarea>
             </div>
 
             <div class="navigation-buttons">
                 <button class="nav-button prev" onclick="prevTab()">← Previous</button>
-                <button class="nav-button next" onclick="nextTab()">Next →</button>
+                <button class="nav-button next" onclick="nextTab()">Next: Revenue Recognition →</button>
             </div>
         </div>
 
-        <!-- Stage 5: Scale & Growth -->
+        <!-- Stage 5: Revenue Forecasting & Recognition -->
         <div class="tab-content" id="tab-4">
             <div class="stage-intro">
-                <h2>Stage 5: Scale & Growth</h2>
-                <p><strong>Goal:</strong> Map the relationship between business growth and operational breaking points to identify where current systems fail at scale.</p>
+                <h2>Stage 5: Revenue Forecasting & Recognition</h2>
+                <p><strong>Pain Point:</strong> Variable usage (AUC, trading volume), delayed activations, and complex multi-term contracts make revenue unpredictable. Finance uses Excel with no linkage to pipeline or booked orders.</p>
+            </div>
+
+            <div class="rca-callout">
+                🎯 RCA Solutions to Probe: Advanced Forecasting • Contract-Based Rev Rec • AI Forecast Adjustment • Pipeline-to-Revenue Visibility
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">1</div>
-                    <div class="question-text">Help me understand your scaling constraints: You have 400 clients today. Walk me through what breaks first as you grow - is it: (A) Number of clients (500? 1000?), (B) Complexity per client (more products, more assets), (C) Geographic expansion (new entities), or (D) Product launches (new revenue streams)? What is the actual bottleneck and how do you know?</div>
+                    <div class="question-text">Walk me through ARR forecasting with usage variability: You have $20M in contracted annual custody fees (based on committed AUC). But actual monthly usage varies ±30% (crypto volatility, client deposits/withdrawals). How do you forecast next quarter's revenue? (A) Use contracted commitments (optimistic)? (B) Use historical actuals (lagging indicator)? (C) Blend both somehow? Where does forecast model live - Excel? Tableau? CPQ? Who updates it and how often?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Map growth vectors → operational bottleneck → breaking point..."></textarea>
+                <textarea class="answer-box" placeholder="Probe: Forecast methodology, usage variability handling, system ownership..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">2</div>
-                    <div class="question-text">Walk me through geographic expansion impact: You're launching in Hong Kong and Abu Dhabi. For each new entity, explain the relationship between: (A) New legal entity setup, (B) New pricing/product configuration, (C) New currency/tax rules, (D) Billing system changes needed. How long does this take? Who does the work? What's manual vs. automated?</div>
+                    <div class="question-text">Help me understand pipeline-to-revenue visibility: Sales forecasts $15M in Q4 bookings. But Finance knows activation takes 60 days average. So Q4 bookings don't become Q4 revenue - they become Q1/Q2 revenue. How does Finance translate Sales pipeline into revenue forecast? Manual adjustment in Excel ("Q4 bookings × 30% activation rate = Q4 revenue")? If manual, how often is forecast materially wrong (±20%)?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Map new entity → configuration requirements → operational effort..."></textarea>
+                <textarea class="answer-box" placeholder="Probe: Pipeline-to-revenue translation, activation lag modeling, forecast accuracy..."></textarea>
             </div>
 
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">3</div>
-                    <div class="question-text">Explain the relationship between customer growth and headcount: If you 3x customers (400 â†' 1,200) over 18 months, does your Finance/RevOps team need to 3x? 2x? Stay flat? Walk me through what work scales linearly with customer count vs. what work stays fixed. Where would you need to add people?</div>
+                    <div class="question-text">Explain contracted vs actual usage forecasting: Galaxy Digital contract: $500M AUC committed, 0.30% rate, $1.5M annual revenue. But Q1 actual AUC: $420M (16% below commitment). Q2 actual: $580M (16% above). For Q3/Q4 forecast, do you assume: (A) $500M commitment (contract), (B) $500M average (50% probability), (C) Trending actuals (extrapolate $580M)? How do you factor crypto market conditions (bull market = higher AUC, bear market = lower)?</div>
                 </div>
-                <textarea class="answer-box" placeholder="Map customer growth → workload scaling → headcount requirements..."></textarea>
+                <textarea class="answer-box" placeholder="Probe: Usage forecast methodology, market factor integration, probability weighting..."></textarea>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Error Detection & Correction</div>
+                <div class="subsection-title">Revenue Recognition Complexity</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">4</div>
-                        <div class="question-text">Walk me through your error distribution: Out of 400 monthly invoices, how many have errors requiring correction? Of those errors, what percentage are: (A) Wrong volume discount applied, (B) Missed AUC fluctuation, (C) Currency conversion issue, (D) Manual calculation mistake, (E) Data import failure, (F) Other? Map the error types to their root causes.</div>
+                        <div class="question-text">Walk me through usage-based revenue recognition: Customer uses custody services Jan 1-31 (daily AUC tracking). Invoice generated Jan 31 for $50K. Payment due Feb 28 (net 30). Under ASC 606, when is revenue recognized? (A) Daily as service delivered (Jan 1-31)? (B) Jan 31 when invoice sent? (C) Feb 28 when paid? Who determines this - Finance? Auditors? What's rationale? How is it documented?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map invoice volume → error frequency → error types → root causes..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: Rev rec timing rules, ASC 606 compliance, documentation process..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">5</div>
-                        <div class="question-text">Help me understand error discovery mechanisms: When an invoice error happens, who finds it first - (A) Finance QA before sending (what % caught), (B) Client complains after receiving (what % caught), (C) Auditor finds 6 months later (what % caught), or (D) Never discovered (what % estimated)? Walk me through the detection → correction → prevention flow.</div>
+                        <div class="question-text">Help me understand prepaid vs arrears revenue recognition: Platform subscription billed Jan 1 for full year ($120K, service delivered Jan-Dec). Custody billed Jan 31 for January service ($50K, service already delivered Jan 1-31). How does Finance handle two different recognition patterns: (A) Platform: Recognize $10K/month (deferred revenue unwind), (B) Custody: Recognize $50K immediately (Jan 31)? Is this automated or manual journal entries? If manual, how many hours per month?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map error types → detection timing → correction workflow..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: Multi-pattern rev rec handling, deferred revenue tracking, automation level..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">6</div>
-                        <div class="question-text">Walk me through a specific correction scenario: Client should have qualified for volume discount in March, April, May (3 months) but didn't - overbilled by $15K total. You discover this in June. Explain: (A) How correction appears on June invoice (credit memo? adjustment? footnote?), (B) How revenue recognition is corrected (reverse prior months?), (C) How you prevent recurrence. What's the relationship between the error, the correction, and the system change?</div>
+                        <div class="question-text">Explain contract modification revenue impact: Original 3-year contract: $300K/year (total $900K, Year 1 complete, $300K recognized). After Year 1, negotiate price increase to $350K/year for remaining 2 years. ASC 606 requires: (A) Prospective treatment (recognize $350K in Year 2/3, don't touch Year 1), or (B) Cumulative catch-up (recognize $350K in Year 2 + $50K adjustment for Year 1)? Who determines classification? How often are modifications classified incorrectly, causing audit issues?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map error discovery → correction mechanism → accounting treatment → prevention..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: Modification accounting, classification determination, audit risk..."></textarea>
                 </div>
             </div>
 
             <div class="subsection">
-                <div class="subsection-title">Operational Reality</div>
+                <div class="subsection-title">Multi-Entity & Segment Reporting</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">7</div>
-                        <div class="question-text">Map your month-end close process: From "January 31 11:59 PM" to "All invoices sent," walk me through: (A) Hour 0-24: What happens? (Data freeze? Exports? Calculations?), (B) Hour 24-48: What happens?, (C) Hour 48-72: What happens? At each stage, how many people touch the process? Where are the wait times? Where does work queue up?</div>
+                        <div class="question-text">Walk me through multi-entity revenue consolidation: Client uses Copper UK (custody, £50K/month) and Copper UAE (securities, £20K/month). Each entity recognizes revenue in local books (UK GAAP, UAE regs). For group reporting to board/investors, how do you consolidate? Manual Excel roll-up? Automated consolidation system? If manual, how long does month-end consolidation take? How often do inter-company eliminations have errors?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map timeline → activities → people → bottlenecks..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: Consolidation process, inter-company handling, error rate, time burden..."></textarea>
                 </div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">8</div>
-                        <div class="question-text">Help me understand team allocation: Finance team spends X hours/month on billing operations vs. Y hours on strategic work (forecasting, analysis, board reporting). What's the current split? What should it be? What's the relationship between billing automation and Finance's ability to do higher-value work?</div>
+                        <div class="question-text">Help me understand board revenue reporting: Monthly board deck requires: (A) Revenue by product (Custody $12M, ClearLoop $3M, Staking $1M), (B) Revenue by geo (UK $8M, US $5M, HK $2M, UAE $1M), (C) New vs expansion (new logos $4M, expansion $12M). Where does this data come from? Press button in system? Or 2-day Excel project stitching CPQ + Billing + Finance + manual tracking? If Excel, how confident are you in accuracy?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map time allocation → operational vs. strategic → desired state..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: Reporting automation level, data sources, manual effort, confidence in accuracy..."></textarea>
                 </div>
-            </div>
-
-            <div class="subsection">
-                <div class="subsection-title">Audit & Compliance Burden</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">9</div>
-                        <div class="question-text">Walk me through audit documentation requirements: Auditors request: (A) Revenue recognition schedules, (B) Usage data supporting invoices, (C) Contract amendment history, (D) Pricing change approvals, (E) Multi-entity consolidation. For each, where does this data live today? How long to compile? Who pulls it together? Map data sources → compilation effort → audit deliverable.</div>
+                        <div class="question-text">Explain renewal/expansion revenue tracking: Brevan Howard renews 3-year custody contract (renewal ARR: $450K). 6 months later, adds ClearLoop (expansion ARR: $180K). For metrics tracking, how do you categorize: (A) Renewal: $450K (baseline), (B) Expansion: $180K (net new)? Is this tracked in CRM? Finance system? Spreadsheet? For board reporting "Net Revenue Retention", how do you calculate (need renewal + expansion - churn by cohort)? If spreadsheet-based, how often are expansion amounts missed or miscategorized?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map audit requests → data sources → compilation time → documentation quality..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: Renewal/expansion categorization, NRR calculation, tracking gaps..."></textarea>
                 </div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">Final Synthesis</div>
 
                 <div class="question-card">
                     <div class="question-header">
                         <div class="question-number">10</div>
-                        <div class="question-text">Help me understand management reporting: Board wants revenue by (A) Product, (B) Geography, (C) Customer cohort, (D) Vintage (when customer signed), (E) Expansion vs. new. How long does it take to generate this report? Walk me through: Data lives in System X → exported to Excel → manual pivot tables → consolidated → formatted → delivered. What's the relationship between data fragmentation and reporting latency?</div>
+                        <div class="question-text">Walk me through your ideal end state: If you could wave a magic wand, what would quote-to-cash look like? Sales closes deal → System automatically generates order → Order triggers provisioning tasks → Usage data flows to billing → Invoices auto-generate → Revenue recognized correctly → Board reports updated real-time. What percentage of that vision is automated today vs manual? What's the ONE system integration that would unlock the most value - CPQ ↔ Billing? Billing ↔ Usage sources? Billing ↔ ERP? Why that one?</div>
                     </div>
-                    <textarea class="answer-box" placeholder="Map reporting requirements → data sources → manual effort → delivery time..."></textarea>
+                    <textarea class="answer-box" placeholder="Probe: Current automation %, biggest integration gap, value prioritization..."></textarea>
                 </div>
-            </div>
-
-            <div class="context-note">
-                <strong>Final Mapping Exercise:</strong><br>
-                If you could eliminate ONE manual step in your quote-to-cash process - not "make it faster" but completely remove the need for human intervention - what would it be? Walk me through: (A) What happens today, (B) Why it requires manual work, (C) What the business impact would be if it were automated, (D) What downstream processes depend on this step.
             </div>
 
             <div class="navigation-buttons">
                 <button class="nav-button prev" onclick="prevTab()">← Previous</button>
-                <button class="nav-button next" onclick="nextTab()" disabled>Complete</button>
+                <button class="nav-button next" onclick="nextTab()" disabled>Complete ✓</button>
             </div>
         </div>
 
@@ -809,7 +783,7 @@
             <div class="progress-fill" id="progress"></div>
         </div>
 
-        <button class="export-button" onclick="exportAnswers()">💾 Export Notes</button>
+        <button class="export-button" onclick="exportAnswers()">💾 Export Discovery</button>
     </div>
 
     <script>
@@ -863,26 +837,39 @@
         });
 
         function exportAnswers() {
-            let exportText = 'COPPER.CO BUSINESS DISCOVERY\n';
-            exportText += '═'.repeat(60) + '\n\n';
+            let exportText = 'COPPER.CO RCA DISCOVERY\n';
+            exportText += '═'.repeat(80) + '\n\n';
             exportText += `Date: ${new Date().toLocaleDateString()}\n\n`;
             
             const stages = [
-                'Product Economics',
-                'Operational Complexity',
-                'Volatility & Variables',
-                'Change Management',
-                'Scale & Growth'
+                'Product Config & Bundles',
+                'Pricing & Approvals',
+                'Quote-to-Order Handoff',
+                'Order-to-Invoice Flow',
+                'Revenue Recognition'
             ];
+            
+            let currentStage = -1;
+            let questionNum = 1;
             
             textareas.forEach((textarea, index) => {
                 const answer = textarea.value.trim();
                 
                 if (answer) {
+                    const newStage = Math.floor(index / 10);
+                    if (newStage !== currentStage) {
+                        currentStage = newStage;
+                        questionNum = 1;
+                        exportText += '\n' + '═'.repeat(80) + '\n';
+                        exportText += `STAGE ${currentStage + 1}: ${stages[currentStage].toUpperCase()}\n`;
+                        exportText += '═'.repeat(80) + '\n\n';
+                    }
+                    
                     const questionText = textarea.previousElementSibling.querySelector('.question-text').textContent;
-                    exportText += `Q${index + 1}: ${questionText}\n\n`;
-                    exportText += `${answer}\n\n`;
-                    exportText += '─'.repeat(60) + '\n\n';
+                    exportText += `Q${questionNum}: ${questionText}\n\n`;
+                    exportText += `ANSWER:\n${answer}\n\n`;
+                    exportText += '─'.repeat(80) + '\n\n';
+                    questionNum++;
                 }
             });
             
@@ -890,7 +877,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `copper-discovery-${new Date().toISOString().split('T')[0]}.txt`;
+            a.download = `copper-rca-discovery-${new Date().toISOString().split('T')[0]}.txt`;
             a.click();
             URL.revokeObjectURL(url);
         }
